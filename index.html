@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonoma Studio Launcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Poppins:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="sidebar-icon active" onclick="cambiarJuego(this)">
+            <i class="fa-solid fa-house"></i><span class="game-name-pixel">INICIO</span>
+        </div>
+        <div class="sidebar-icon" onclick="window.location.href='ixora.html'">
+            <img src="imagenes/logo-ixora.jpg" alt="Logo Ixora" class="sidebar-custom-logo"><span class="game-name-pixel">IXORA</span>
+        </div>        
+        <div class="sidebar-icon" onclick="cambiarJuego(this)">
+            <i class="fa-solid fa-car-side"></i><span class="game-name-pixel">NEON RUSH</span>
+        </div>
+        <div class="sidebar-icon" id="btnAjustesSidebar" style="margin-top: auto; margin-bottom: 20px;" onclick="abrirAjustes(this)">
+            <i class="fa-solid fa-gear"></i><span class="game-name-pixel">AJUSTES</span>
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+        <div class="game-background"></div>
+
+        <header class="top-header">
+            <div class="logo-container">
+                <img src="imagenes/logo.png" alt="Sonoma Studio Logo" class="logo-img-effect">
+            </div>
+            
+            <nav class="main-nav">
+                <a href="#" class="active">Destacado</a>
+                <a href="#">Estudio</a>
+                <a href="#">Comunidad</a>
+                <a href="#">Soporte</a>
+            </nav>
+            <div class="header-actions">
+                <button class="action-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="action-btn cart-btn" id="cartBtnMain" onclick="abrirCarrito()">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span class="cart-text">Comprar</span>
+    <span id="cartBadge" class="cart-badge hidden">0</span> </button>                
+
+<button class="action-btn" id="btnNotificaciones" onclick="abrirNotificaciones()">
+    <i class="fa-regular fa-bell"></i>
+    <span id="notifBadge" class="cart-badge hidden">!</span> </button>
+                
+                <div class="account-container" id="userAccount">
+                    <button class="action-btn login-btn" onclick="window.location.href='cuenta.html'"><i class="fa-regular fa-user"></i> Mi Cuenta</button>
+                    <div class="account-dropdown" id="accountDropdown">
+                        <span class="gamertag-display">Agente Sonoma</span>
+                        <a href="cuenta.html" id="btnIrPerfil">Perfil</a>
+                        <a href="#" onclick="abrirModalLogout(event)">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-area">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <span class="badge pulse-badge"><i class="fa-solid fa-microchip"></i> FASE ALPHA</span>
+                    <h1 class="glitch" data-text="IXORA: EL CAMBIO">IXORA:<br>EL CAMBIO ES AHORA</h1>
+                    <p>Adéntrate en el Río Santiago. Domina el pixel art, sobrevive a la toxicidad y descubre los secretos de los dioses antiguos en nuestra próxima entrega estelar.</p>
+                    <div class="hero-buttons">
+                        <button class="play-btn" onclick="window.location.href='ixora.html'"><i class="fa-solid fa-eye"></i> EXPLORAR PROYECTO</button>
+                        <button class="secondary-btn">Ver Tráiler Oficial</button>
+                    </div>
+                    <div class="prestige-bar">
+                        <div class="prestige-item"><i class="fa-brands fa-windows"></i> PC / Win</div>
+                        <div class="prestige-item"><i class="fa-solid fa-cloud-arrow-down"></i> Descarga Digital</div>
+                        <div class="prestige-item"><i class="fa-solid fa-code-branch"></i> Motor Personalizado</div>
+                    </div>
+                </div>
+                <div class="hero-character">
+                        <img src="imagenes/IdleUlises.gif" alt="Protagonista Ixora" class="character-gif">
+                </div>
+            </section>
+
+            <section class="news-section">
+                <h3><i class="fa-solid fa-satellite-dish fa-beat-fade" style="color: var(--primary-color);"></i> Transmisiones del Estudio (DevLogs)</h3>
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="imagenes/Desarrollo.png" alt="Diseño de Niveles" class="news-img">
+                        <h4>Construyendo el Río Santiago</h4>
+                        <p>Un vistazo exclusivo al diseño de niveles y la estructuración del mapa utilizando nuestro sistema de tilesets personalizados.</p>
+                    </div>
+                    <div class="news-card">
+                        <img src="imagenes/Test.png" alt="Test de Interfaz" class="news-img">
+                        <h4>Pruebas de Combate y UI</h4>
+                        <p>Ajustando la interfaz de usuario, las mecánicas de movimiento y las físicas base del protagonista en el entorno de pruebas.</p>
+                    </div>
+                    <div class="news-card">
+                        <img src="imagenes/Estructura.png" alt="Eventos y Código" class="news-img">
+                        <h4>Arquitectura del Sistema</h4>
+                        <p>Optimizando los eventos lógicos, las transiciones de escena y la estructuración interna para garantizar un rendimiento estable.</p>
+                    </div>
+                </div>
+                
+                <section class="promo-section">
+                    <h3><i class="fa-solid fa-tags" style="color: var(--primary-color);"></i> Promociones de la Corporación</h3>
+                    <div class="promo-grid">
+                        <div class="promo-card">
+                            <div class="promo-badge">-20%</div>
+                            <img src="imagenes/logo-ixora.jpg" alt="OST Ixora" class="promo-img">
+                            <div class="promo-info">
+                                <h4>Soundtrack Original (Edición Digital)</h4>
+                                <p class="promo-price"><span class="old-price">$250 MXN</span> $199 MXN</p>
+                                <button class="btn-add-cart-pro" onclick="agregarAlCarrito('Soundtrack Original', 199, 'imagenes/logo-ixora.jpg')">
+                                    <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+                                </button>
+                            </div>
+                        </div>
+                        <div class="promo-card">
+                            <img src="imagenes/main_lev_build.png" alt="Playera" class="promo-img">
+                            <div class="promo-info">
+                                <h4>Artbook Digital: El Río Santiago</h4>
+                                <p class="promo-price">$299 MXN</p>
+                                <button class="btn-add-cart-pro" onclick="agregarAlCarrito('Artbook Digital', 299, 'imagenes/main_lev_build.png')">
+                                    <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+                                </button>
+                            </div>
+                        </div>
+                        <div class="promo-card">
+                            <div class="promo-badge">PAQUETE</div>
+                            <img src="imagenes/Captura de pantalla 2026-04-10 212953.png" alt="Artbook" class="promo-img">
+                            <div class="promo-info">
+                                <h4>Pack Supervivencia (Juego + Arte)</h4>
+                                <p class="promo-price">$399 MXN</p>
+                                <button class="btn-add-cart-pro" onclick="agregarAlCarrito('Pack Supervivencia', 399, 'imagenes/Captura de pantalla 2026-04-10 212953.png')">
+                                    <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="support-wrapper">
+                    <div class="support-container">
+                        <h3><i class="fa-solid fa-headset"></i> Centro de Operaciones</h3>
+                        <form class="support-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Correo Electrónico</label>
+                                    <input type="email" placeholder="agente@correo.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Región</label>
+                                    <select required class="dark-select">
+                                        <option value="" disabled selected>Selecciona tu base...</option>
+                                        <option value="mx">México</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Reporte de Situación</label>
+                                <textarea rows="4" placeholder="Describe tu consulta aquí..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Enviar Transmisión</button>
+                        </form>
+                    </div>
+                    <div class="support-side-panel">
+                        <h4><i class="fa-solid fa-location-dot"></i> Base de Desarrollo</h4>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.212857677671!2d-103.19582442577159!3d20.660917400312982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b5e96e4bbd65%3A0x3116a98101842b0f!2sCETI%20Plantel%20Rio%20Santiago!5e0!3m2!1ses-419!2smx!4v1777255513663!5m2!1ses-419!2smx" width="100%" height="200" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="server-status" style="margin-top: 10px;">
+                            <div class="status-indicator"><span class="dot online"></span><span>Servidores</span></div>
+                            <span class="ping-text">En línea</span>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <section class="support-wrapper">
+                <div class="support-container">
+                    <h3><i class="fa-solid fa-headset"></i> Centro de Operaciones</h3>
+                    <form class="support-form">
+                        <div class="form-row">
+                            <div class="form-group"><label>Correo Electrónico</label><input type="email" placeholder="agente@correo.com" required></div>
+                            <div class="form-group"><label>Región / País</label>
+                                <select required class="dark-select">
+                                    <option value="" disabled selected>Selecciona tu base...</option>
+                                    <option value="mx">México</option>
+                                    <option value="latam">Resto de Latinoamérica</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group"><label>Reporte de Situación</label><textarea rows="4" placeholder="Describe el bug o tu consulta aquí..." required></textarea></div>
+                        <button type="submit" class="submit-btn">Enviar Transmisión</button>
+                    </form>
+                </div>
+                <div class="support-side-panel">
+                    <h4><i class="fa-solid fa-server"></i> Estado del Sistema</h4>
+                    <div class="server-status"><div class="status-indicator"><span class="dot online"></span><span>Servidores Ixora</span></div><span class="ping-text">En línea</span></div>
+                    <div class="server-status"><div class="status-indicator"><span class="dot online"></span><span>Matchmaking</span></div><span class="ping-text">12ms</span></div>
+                    <div class="discord-card" title="Únete a la comunidad"><i class="fa-brands fa-discord"></i><p>¿Necesitas ayuda rápida?<br>Únete a nuestro Discord oficial.</p></div>
+                </div>
+            </section>
+            
+            <footer class="studio-footer">
+                <div class="footer-info">
+                    <img src="imagenes/axolotito.png" alt="Sonoma Pequeño" class="logo-img-effect-small">
+                    <p>© 2026 Sonoma Studio. Todos los derechos reservados.</p>
+                    <div class="legal-links">
+                        <a href="terminos.html">Términos y Condiciones</a>
+                        <a href="privacidad.html">Política de Privacidad</a>
+                        <a href="acuerdo.html">Acuerdo de Usuario</a>
+                    </div>
+                    <div class="payment-methods" title="Métodos de pago aceptados"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-paypal"></i></div>
+                </div>
+                <div class="footer-links"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-discord"></i></a></div>
+            </footer>
+        </main>
+    </div>
+<button onclick="resetCompras()" style="position:fixed; bottom:20px; right:20px; z-index:999;">
+    RESET TEST
+</button>
+
+    <div class="settings-overlay hidden" id="cartOverlay" onclick="cerrarCarrito()">
+        <div class="settings-drawer glass-panel" id="cartDrawer" style="padding:30px;" onclick="event.stopPropagation()">
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-cart-shopping"></i> Tu Carrito</h2>
+                <button class="close-settings" onclick="cerrarCarrito()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="settings-content" style="padding: 20px 0;">
+                
+                <div id="cartItemsList"></div>
+                
+                <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.1); margin-top:20px; padding-top:15px;">
+                    <span style="color:var(--text-muted);">Total Estimado:</span>
+                    <span id="cartTotalDisplay" style="color:var(--primary-color); font-weight:bold; font-size:1.2rem;">$0.00 MXN</span>
+                </div>
+                
+                <button class="btn-mercado-pago" onclick="procederPagoMP()">
+                    <img src="https://www.mercadopago.com/org-img/MP3/home/logomp3.gif" alt="MP" style="height: 20px; vertical-align: middle; margin-right: 10px;">
+                    PROCEDER AL PAGO
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay hidden" id="logoutModalOverlay">
+        <div class="custom-modal">
+            <div class="modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3>¿CERRAR CONEXIÓN?</h3>
+            <p>Estás a punto de desconectarte de la red de Sonoma Studio. ¿Estás seguro?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn btn-no" onclick="cerrarModalLogout()">No, regresar</button>
+                <button class="modal-btn btn-yes" onclick="confirmarLogout()">Sí, desconectar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-overlay hidden" id="settingsModalOverlay" onclick="cerrarAjustes()">
+        <div class="settings-drawer glass-panel" id="settingsDrawer">
+            
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-sliders"></i> Ajustes</h2>
+                <button class="close-settings" onclick="cerrarAjustes()"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+            </div>
+            
+            <div class="settings-topbar">
+                <button class="setting-tab-btn active" onclick="cambiarPestañaAjustes(this, 'tab-cuenta')"><i class="fa-solid fa-user-shield"></i> Cuenta</button>
+                <button class="setting-tab-btn" onclick="cambiarPestañaAjustes(this, 'tab-juego')"><i class="fa-solid fa-gamepad"></i> Sistema</button>
+                <button class="setting-tab-btn" onclick="cambiarPestañaAjustes(this, 'tab-audio')"><i class="fa-solid fa-headphones"></i> Audio</button>
+            </div>
+
+            <div class="settings-content">
+                <div id="tab-cuenta" class="setting-section active">
+                    <h3>Identidad de Agente</h3>
+                    <p class="settings-desc">Tu alias en la red. Sujeto a reglas de la corporación.</p>
+                    
+                    <div class="gamertag-manager">
+                        <label>Gamertag Actual:</label>
+                        <input type="text" id="ajustesGamertagActual" readonly value="Cargando...">
+                        
+                        <label style="margin-top: 15px;">Nuevo Gamertag (max 15):</label>
+                        <div class="change-tag-group">
+                            <input type="text" id="ajustesNuevoGamertag" maxlength="15" placeholder="Ej. CazadorX">
+                            <button class="submit-btn" onclick="solicitarCambioGamertag()">Actualizar</button>
+                        </div>
+                        <p id="gamertagStatusMsg" class="gamertag-status">Estado: En espera de autorización...</p>
+                    </div>
+
+                    <div id="premiumUnlockPanel" class="premium-panel hidden">
+                        <h4><i class="fa-solid fa-lock"></i> Cambio Bloqueado (6 Meses)</h4>
+                        <p>Soborna a la corporación para liberar el nombre inmediatamente.</p>
+                        <button class="premium-btn" onclick="pagarDolarSimulado()"><i class="fa-solid fa-sack-dollar"></i> Pagar $1.00 USD</button>
+                    </div>
+                </div>
+
+                <div id="tab-juego" class="setting-section hidden">
+                    <h3>Opciones de Sistema</h3>
+                    <div class="settings-row">
+                        <label>Idioma del Servidor:</label>
+                        <select class="dark-select">
+                            <option value="es" selected>Español (Latinoamérica)</option>
+                            <option value="en">English (US)</option>
+                            <option value="pt">Português (Brasil)</option>
+                        </select>
+                    </div>
+                    <div class="settings-row">
+                        <label>Filtro Visual Retro:</label>
+                        <select class="dark-select">
+                            <option value="off" selected>Desactivado (Pixel Perfect)</option>
+                            <option value="crt">Efecto Monitor CRT</option>
+                            <option value="scanlines">Scanlines (Líneas)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="tab-audio" class="setting-section hidden">
+                    <h3>Mezclador de Frecuencias</h3>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-volume-high"></i> Volumen Maestro</label>
+                        <input type="range" min="0" max="100" value="80" class="cyber-slider">
+                    </div>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-music"></i> Música (OST)</label>
+                        <input type="range" min="0" max="100" value="100" class="cyber-slider">
+                    </div>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-burst"></i> Efectos (SFX)</label>
+                        <input type="range" min="0" max="100" value="60" class="cyber-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-modal-overlay hidden" id="sonomaAlertOverlay" style="z-index: 3000;">
+        <div class="custom-modal">
+            <div class="modal-icon" id="sonomaAlertIcon"><i class="fa-solid fa-circle-exclamation"></i></div>
+            <h3 id="sonomaAlertTitle" style="font-family: 'Orbitron', sans-serif; margin-bottom: 10px;">ALERTA</h3>
+            <p id="sonomaAlertMessage" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">Mensaje</p>
+            <div class="modal-buttons" id="sonomaAlertButtons">
+                <button class="modal-btn btn-yes" onclick="cerrarAlertaSonoma()">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay hidden" id="loadingPaymentOverlay" style="z-index: 4000; background: rgba(0,0,0,0.95);">
+        <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div class="loader-spinner"></div>
+            <h3 class="glitch" data-text="PROCESANDO TRANSACCIÓN..." style="font-size: 1.5rem; margin-bottom: 10px;">PROCESANDO TRANSACCIÓN...</h3>
+            <p style="color: var(--primary-color); font-size: 0.85rem; letter-spacing: 2px;">CONECTANDO CON MERCADO PAGO <i class="fa-solid fa-lock"></i></p>
+        </div>
+    </div>
+<div class="settings-overlay hidden" id="notifOverlay" onclick="cerrarNotificaciones()">
+        <div class="settings-drawer glass-panel" id="notifDrawer" style="padding:30px;" onclick="event.stopPropagation()">
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-bell"></i> Biblioteca y Recibos</h2>
+                <button class="close-settings" onclick="cerrarNotificaciones()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="settings-content" id="purchasedItemsList" style="padding: 20px 0;">
+                </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
