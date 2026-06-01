@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Poppins:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ixora.css">
 </head>
 <body class="page-fade-in">
 
@@ -29,8 +30,10 @@
             </div>
             <nav class="main-nav">
                 <a href="index.html">Destacado</a>
-                <a href="#" class="active">Ixora</a>
-                <a href="#">Comunidad</a>
+                <a href="estudio.html">Estudio</a>
+                <a href="comunidad.html">Comunidad</a>
+                <a href="soporte.html">Soporte</a>
+
             </nav>
             <div class="header-actions">
                 <button class="action-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -60,7 +63,7 @@
             
             <section class="gp-hero">
               <div class="gp-hero-video-placeholder">
-                  <video autoplay muted loop playsinline class="bg-video">
+                  <video id="heroVideo" autoplay muted playsinline class="bg-video">
                       <source src="imagenes/Gameplay.mp4" type="video/mp4">
                   </video>
                   <div class="gp-hero-gradient"></div>
@@ -70,7 +73,7 @@
                     <div class="gp-header-flex">
                         <img src="imagenes/logo-ixora.jpg" alt="Ixora Mini" class="gp-mini-logo">
                         <div class="gp-title-box">
-                            <h1 class="glitch gp-main-title" data-text="IXORA: EL CAMBIO">IXORA: EL CAMBIO</h1>
+                            <h1 class="glitch gp-main-title" data-text="IXORA: EL CAMBIO ES AHORA">IXORA: EL CAMBIO ES AHORA</h1>
                             <p class="gp-studio-name">SONOMA STUDIO <span class="gp-verify"><i class="fa-solid fa-circle-check"></i></span></p>
                         </div>
                     </div>
@@ -96,32 +99,62 @@
                 
                 <div class="gp-info-main">
                     
-                    <section class="gp-gallery-section">
-                        <div class="gp-gallery-container">
-                            <div class="gp-gallery-item" onclick="abrirVisor('imagenes/Captura de pantalla 2026-04-10 212953.png')">
-                                <img src="imagenes/Gameplay.png" alt="Gameplay">
-                                <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
-                            </div>
-                            <div class="gp-gallery-item" onclick="abrirVisor('imagenes/main_lev_build.png')">
-                                <img src="imagenes/Cueva.png" alt="Cueva 1">
-                                <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
-                            </div>
-                            <div class="gp-gallery-item" onclick="abrirVisor('imagenes/Gemini_Generated_Image_v31rohv31rohv31r.png')">
-                                <img src="imagenes/Arte.png" alt="Arte">
-                                <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
-                            </div>
-                            <div class="gp-gallery-item" onclick="abrirVisor('imagenes/image_8a63ab.png')">
-                                <img src="imagenes/Tile.png" alt="Tileset">
-                                <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
-                            </div>
-                        </div>
-                    </section>
+<section class="gp-gallery-section">
+    <div class="gp-gallery-container">
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/Gameplay.png')">
+            <img src="imagenes/Gameplay.png" alt="Gameplay">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/inicio.png')">
+            <img src="imagenes/inicio.png" alt="Cueva 1">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/configuracion.png')">
+            <img src="imagenes/configuracion.png" alt="Arte">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/muerte.png')">
+            <img src="imagenes/muerte.png" alt="Tileset">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+
+        <!-- Extras de relleno -->
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/niveles.png')">
+            <img src="imagenes/niveles.png" alt="Gameplay Extra 1">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/rio2.png')">
+            <img src="imagenes/rio2.png" alt="Cueva Extra 2">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/cuevas.png')">
+            <img src="imagenes/cuevas.png" alt="Arte Extra 3">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/cueva2.png')">
+            <img src="imagenes/cueva2.png" alt="Tileset Extra 4">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/ceti.jpeg')">
+            <img src="imagenes/ceti.jpeg" alt="Gameplay Extra 5">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/Cueva.png')">
+            <img src="imagenes/Cueva.png" alt="Cueva Extra 6">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+        <div class="gp-gallery-item" onclick="abrirVisor('imagenes/vertedero.jpeg')">
+            <img src="imagenes/vertedero.jpeg" alt="Arte Extra 7">
+            <div class="gp-gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+        </div>
+    </div>
+</section>
 
                     <section class="gp-about-section">
                         <h2>Acerca de este juego <i class="fa-solid fa-arrow-right"></i></h2>
-                        <p>Bienvenido al Río Santiago, un ecosistema de impresionante belleza pero mortalmente contaminado. Los años de descuido industrial han forjado un nuevo infierno tóxico y han despertado a los antiguos dioses, quienes claman venganza contra la humanidad.</p>
-                        <p>En este Metroidvania de acción 2D, asumes el rol de Ulises, un agente encargado de limpiar la zona cero. Tu misión principal es recolectar basura y residuos químicos esparcidos por el mapa; esta mecánica ecológica no solo limpia el entorno, sino que es la moneda de cambio para mejorar tus habilidades, desbloquear nuevas áreas y potenciar tu armamento.</p>
-                        <p>La exploración, la purificación del agua y el combate táctico son los pilares para sobrevivir. La fauna local ha mutado en aberraciones violentas, y al final de cada zona de cuarentena te enfrentarás a deidades colosales como Tlaloc y Quetzalcóatl, deformados por la radiación y la contaminación.</p>
+                        <p>Bienvenido a la Zona Cero, un ecosistema de impresionante belleza pero mortalmente contaminado. Los años de descuido industrial han forjado un nuevo infierno tóxico y han despertado a los antiguos dioses, quienes claman venganza contra la humanidad.</p>
+                        <p>En este Metroidvania de acción 2D, asumes el rol de Ulises, un agente encargado de limpiar la infección. Tu recorrido te llevará por tres zonas críticas: iniciarás en los pasillos en ruinas del <strong>CETI Río Santiago</strong>, descenderás a la oscuridad de la <strong>Cuenca del Río Santiago</strong> y te enfrentarás al núcleo de la mutación en el <strong>Vertedero de Matatlán</strong>.</p>
+                        <p>Tu misión principal es recolectar basura y residuos químicos esparcidos por el mapa; esta mecánica ecológica no solo limpia el entorno, sino que es la moneda de cambio para mejorar tus habilidades, desbloquear nuevas áreas y potenciar tu armamento. La exploración, la purificación del agua y el combate táctico son los pilares para sobrevivir a la fauna mutada y a deidades colosales como Tláloc y Quetzalcóatl.</p>
                         
                         <div class="gp-genres">
                             <span class="gp-tag">Metroidvania</span>
@@ -134,21 +167,21 @@
                     <section class="gp-levels-section">
                         <h2>Zonas de Cuarentena (Niveles) <i class="fa-solid fa-arrow-right"></i></h2>
                         <div class="gp-level-card">
-                            <img src="imagenes/Desarrollo.png" alt="CETI">
+                            <img src="imagenes/ceti.jpeg" alt="CETI">
                             <div>
                                 <h3>CETI Río Santiago</h3>
                                 <p>El punto cero. Lo que alguna vez fue un centro de estudios de ingeniería, ahora es un laberinto infestado de fauna mutante. Encuentra tu equipo básico y sobrevive a los pasillos destrozados.</p>
                             </div>
                         </div>
                         <div class="gp-level-card">
-                            <img src="imagenes/Test.png" alt="Río">
+                            <img src="imagenes/rio.jpeg" alt="Río">
                             <div>
                                 <h3>La Cuenca del Río Santiago</h3>
                                 <p>Desciende a las profundidades tóxicas. Navega por cuevas de obsidiana iluminadas por pebeteros mágicos, esquiva estalactitas afiladas y descubre las ruinas colosales.</p>
                             </div>
                         </div>
                         <div class="gp-level-card">
-                            <img src="imagenes/Desarrollo.png" alt="Vertedero">
+                            <img src="imagenes/vertedero.jpeg" alt="Vertedero">
                             <div>
                                 <h3>Vertedero de Matatlán</h3>
                                 <p>El origen del desastre. Escala montañas de chatarra tecnológica y residuos químicos. Aquí aguardan las aberraciones más letales.</p>
@@ -161,8 +194,8 @@
                     <div class="gp-side-card">
                         <h3>Asistencia de la app <i class="fa-solid fa-angle-up"></i></h3>
                         <ul class="gp-side-list">
-                            <li><i class="fa-solid fa-globe"></i> <div><strong>Sitio web</strong><br><a href="#">sonomastudio.mx</a></div></li>
-                            <li><i class="fa-solid fa-envelope"></i> <div><strong>Correo de ayuda</strong><br><a href="#">soporte@sonomastudio.mx</a></div></li>
+                            <li><i class="fa-solid fa-globe"></i> <div><strong>Sitio web</strong><br><a href="https://github.com">sonomastudio.mx</a></div></li>
+                            <li><i class="fa-solid fa-envelope"></i> <div><strong>Correo de ayuda</strong><br><a href="https://mail.google.com/mail/?view=cm&fs=1&to=soporte.sonomastudio@gmail.com" target="_blank">soporte.sonomastudio@gmail.com</a></div></li>
                             <li><i class="fa-solid fa-shield-halved"></i> <div><strong>Legal</strong><br><a href="privacidad.html">Política de Privacidad</a></div></li>
                         </ul>
                         <div class="gp-dev-box">
@@ -221,26 +254,26 @@
             <div class="modal-icon"><i class="fa-solid fa-chart-pie" style="color: var(--primary-color);"></i></div>
             <h3>Tu Opinión Importa</h3>
             <p>Ayúdanos a mejorar el producto estelar de Sonoma Studio.</p>
-            <form class="auth-form" id="surveyForm" onsubmit="enviarEncuesta(event)">
-                <div class="form-group" style="text-align: left;">
-                    <label style="color:white; margin-bottom:5px; display:block;">¿Qué te parece la temática ecológica del juego?</label>
-                    <select class="dark-select" required style="width:100%; padding:10px;">
-                        <option value="" disabled selected>Selecciona...</option>
-                        <option>Excelente, muy original</option>
-                        <option>Buena, pero le falta pulir</option>
-                        <option>No me llama la atención</option>
-                    </select>
-                </div>
-                <div class="form-group" style="text-align: left; margin-top: 15px;">
-                    <label style="color:white; margin-bottom:5px; display:block;">Del 1 al 5, ¿qué tan fácil fue navegar por la página?</label>
-                    <input type="number" min="1" max="5" class="dark-select" style="width:100%; padding: 10px; background:rgba(0,0,0,0.5); color:white; border:1px solid rgba(255,255,255,0.1);" required>
-                </div>
-                <div class="form-group" style="text-align: left; margin-top: 15px;">
-                    <label style="color:white; margin-bottom:5px; display:block;">Sugerencias de mejora:</label>
-                    <textarea rows="3" class="dark-select" style="width:100%; padding: 10px; background:rgba(0,0,0,0.5); color:white; border:1px solid rgba(255,255,255,0.1);" placeholder="Tus comentarios..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn" style="width: 100%; margin-top: 20px; display:flex; justify-content:center;">Enviar Respuestas</button>
-            </form>
+<form class="auth-form" id="surveyFormFirebase">
+    <div class="form-group" style="text-align: left;">
+        <label style="color:white; margin-bottom:5px; display:block;">¿Qué te parece la temática ecológica del juego?</label>
+        <select id="encTema" class="dark-select" required style="width:100%; padding:10px;">
+            <option value="" disabled selected>Selecciona...</option>
+            <option>Excelente, muy original</option>
+            <option>Buena, pero le falta pulir</option>
+            <option>No me llama la atención</option>
+        </select>
+    </div>
+    <div class="form-group" style="text-align: left; margin-top: 15px;">
+        <label style="color:white; margin-bottom:5px; display:block;">Del 1 al 5, ¿qué tan fácil fue navegar por la página?</label>
+        <input id="encCalif" type="number" min="1" max="5" class="dark-select" style="width:100%; padding: 10px; background:rgba(0,0,0,0.5); color:white; border:1px solid rgba(255,255,255,0.1);" required>
+    </div>
+    <div class="form-group" style="text-align: left; margin-top: 15px;">
+        <label style="color:white; margin-bottom:5px; display:block;">Sugerencias de mejora:</label>
+        <textarea id="encSugerencia" rows="3" class="dark-select" style="width:100%; padding: 10px; background:rgba(0,0,0,0.5); color:white; border:1px solid rgba(255,255,255,0.1);" placeholder="Tus comentarios..." required></textarea>
+    </div>
+    <button type="submit" class="submit-btn" style="width: 100%; margin-top: 20px; display:flex; justify-content:center;">Enviar Respuestas</button>
+</form>
         </div>
     </div>
 
@@ -410,8 +443,10 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Mini script solo para la página de Ixora (Visor de fotos)
+<script>
+        // ==========================================
+        // VISOR DE FOTOS
+        // ==========================================
         function abrirVisor(src) {
             document.getElementById('visorImagen').src = src;
             document.getElementById('visorOverlay').classList.remove('hidden');
@@ -419,6 +454,71 @@
         function cerrarVisor() {
             document.getElementById('visorOverlay').classList.add('hidden');
         }
+
+        // ==========================================
+        // PLAYLIST DE VIDEOS DEL BANNER
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.getElementById('heroVideo');
+            if (video) {
+                // Lista de tus videos (pon el nombre exacto de tu segundo video aquí)
+                const playlist = [
+                    "imagenes/Gameplay.mp4",
+                    "imagenes/Gameplay2.mp4" 
+                ];
+                let indexActual = 0;
+
+                // Cuando el video termina, pasa al siguiente
+                video.addEventListener('ended', () => {
+                    indexActual++;
+                    // Si llega al final de la lista, regresa al primero
+                    if (indexActual >= playlist.length) {
+                        indexActual = 0; 
+                    }
+                    video.src = playlist[indexActual];
+                    video.play();
+                });
+            }
+        });
     </script>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDKqAXZG7fGDt0chpgeAVYzQGpN587h3wM",
+    authDomain: "sonoma-studio.firebaseapp.com",
+    projectId: "sonoma-studio",
+    storageBucket: "sonoma-studio.firebasestorage.app",
+    messagingSenderId: "932852745828",
+    appId: "1:932852745828:web:fb67a11f2b00c1391f0171"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const surveyForm = document.getElementById('surveyFormFirebase');
+  if(surveyForm) {
+      surveyForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          try {
+              // Guardamos en la carpeta "Encuestas" en Firestore
+              await addDoc(collection(db, "Encuestas"), {
+                  tema: document.getElementById('encTema').value,
+                  calificacion: document.getElementById('encCalif').value,
+                  sugerencia: document.getElementById('encSugerencia').value,
+                  fecha: new Date().toLocaleString()
+              });
+              
+              mostrarAlertaSonoma("TELEMETRÍA ENVIADA", "¡Datos de percepción recibidos! Gracias por ayudar a la corporación.", "success");
+              cerrarEncuesta();
+              surveyForm.reset();
+          } catch (error) {
+              mostrarAlertaSonoma("ERROR", "Fallo al enviar la encuesta.", "error");
+          }
+      });
+  }
+</script>
 </body>
 </html>

@@ -264,43 +264,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 tabLogin.addEventListener('click', () => { tabReg.classList.remove('active'); tabLogin.classList.add('active'); registerBox.classList.add('hidden'); loginBox.classList.remove('hidden'); });
             }
         }
-
-        const loginForm = document.getElementById('loginFormSim');
-        if (loginForm) loginForm.addEventListener('submit', (e) => { 
-            e.preventDefault(); 
-            let gamertag = storedGamertag ? storedGamertag : 'Agente_Logueado';
-            iniciarSesionSimulada(gamertag); 
-        });
-
-        const regForm = document.getElementById('registerFormSim');
-        if (regForm) regForm.addEventListener('submit', (e) => { 
-            e.preventDefault(); 
-            const regGT = document.getElementById('regGamertag');
-            if(regGT) iniciarSesionSimulada(regGT.value); 
-        });
-
-        document.querySelectorAll('.google-btn, .facebook-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => { 
-                e.preventDefault(); 
-                if (storedGamertag) { iniciarSesionSimulada(storedGamertag); } 
-                else {
-                    authTabs.style.display = 'none'; loginBox.classList.add('hidden'); registerBox.classList.add('hidden');
-                    if(socialSetupBox) socialSetupBox.classList.remove('hidden');
-                }
-            });
-        });
-
-        const socialForm = document.getElementById('socialSetupFormSim');
-        if (socialForm) socialForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const socGT = document.getElementById('socialGamertag');
-            if(socGT) iniciarSesionSimulada(socGT.value);
-        });
     }
 
     // Iniciar UI del Carrito
     actualizarContador();
     actualizarBotonesComprados();
+    
+    // Llamar a la API de Python
+    cargarProductosDesdeAPI();
+
 });
 
 /* Lógica Estadísticas del Perfil Gamer */
@@ -541,10 +513,13 @@ function procesarPagoReal(total) {
     }
 }
 
-// LÓGICA DE BOTONES GRISES Y DESCARGA PARA IXORA
+// LÓGICA DE BOTONES GRISES, DESCARGA Y FISGONES PARA IXORA
 function actualizarBotonesComprados() {
     let compras = JSON.parse(localStorage.getItem('sonomaCompras')) || [];
     let carrito = JSON.parse(localStorage.getItem('sonoma_cart')) || [];
+    
+    // Agregamos la verificación de si hay sesión iniciada
+    const isLoggedIn = localStorage.getItem('sonomaLoggedIn') === 'true';
     
     // 1. Tarjetas normales
     document.querySelectorAll('.promo-card').forEach(card => {
@@ -558,7 +533,14 @@ function actualizarBotonesComprados() {
         const yaComprado = compras.some(c => nombrePantalla.includes(c) || c.includes(nombrePantalla));
         const enCarrito = carrito.some(i => nombrePantalla.includes(i.nombre) || i.nombre.includes(nombrePantalla));
 
-        if(yaComprado) {
+        // Si NO está logueado, bloqueamos todo
+        if (!isLoggedIn) {
+            btn.innerHTML = '<i class="fa-solid fa-lock"></i> INICIA SESIÓN PARA COMPRAR';
+            btn.classList.add('btn-disabled');
+            btn.onclick = () => { window.location.href = 'cuenta.html'; };
+        } 
+        // Si sí está logueado, aplicamos la lógica normal
+        else if(yaComprado) {
             btn.innerHTML = '<i class="fa-solid fa-check-double"></i> ADQUIRIDO';
             btn.classList.add('btn-disabled');
             btn.onclick = null;
@@ -584,7 +566,11 @@ function actualizarBotonesComprados() {
         const enCarritoIxora = carrito.some(i => nombreJuego.includes(i.nombre) || i.nombre.includes("Ixora"));
         const descargado = localStorage.getItem('ixora_downloaded') === 'true';
 
-        if (descargado) {
+        if (!isLoggedIn) {
+            btnIxora.innerHTML = '<i class="fa-solid fa-lock"></i> INICIA SESIÓN - $149.00 MXN';
+            btnIxora.className = 'gp-buy-now-btn btn-disabled';
+            btnIxora.onclick = () => { window.location.href = 'cuenta.html'; };
+        } else if (descargado) {
             btnIxora.innerHTML = '<i class="fa-solid fa-play"></i> JUGAR AHORA';
             btnIxora.className = 'gp-buy-now-btn btn-play'; 
             btnIxora.onclick = abrirJuegoSimulado;
@@ -728,3 +714,53 @@ function resetCompras() {
     localStorage.clear();
     location.reload();
 }
+
+/* =======================================
+   CONEXIÓN CON API (FRAMEWORK PYTHON/FLASK)
+   ======================================= */
+async function cargarProductosDesdeAPI() {
+    const grid = document.querySelector('.promo-grid');
+    if (!grid) return; // Solo se ejecuta si estamos en la página que tiene la tienda (index)
+
+    try {
+        // Hacemos la petición a tu servidor en PythonAnywhere
+        const response = await fetch('https://sonomastudio.pythonanywhere.com/api/productos');
+        
+        if (!response.ok) {
+            throw new Error('Error en la respuesta del servidor');
+        }
+
+        const productos = await response.json();
+        
+        // Limpiamos el grid actual de HTML estático
+        grid.innerHTML = ''; 
+        
+        // Generamos las tarjetas dinámicamente con los datos de la API
+        productos.forEach(prod => {
+            let etiquetaHtml = prod.etiqueta ? `<div class="promo-badge">${prod.etiqueta}</div>` : '';
+            let precioViejoHtml = prod.precio_viejo ? `<span class="old-price">${prod.precio_viejo}</span>` : '';
+            
+            grid.innerHTML += `
+                <div class="promo-card">
+                    ${etiquetaHtml}
+                    <img src="${prod.imagen}" alt="${prod.nombre}" class="promo-img">
+                    <div class="promo-info">
+                        <h4>${prod.nombre}</h4>
+                        <p class="promo-price">${precioViejoHtml} $${prod.precio} MXN</p>
+                        <button class="btn-add-cart-pro" onclick="agregarAlCarrito('${prod.nombre}', ${prod.precio}, '${prod.imagen}')">
+                            <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+        
+        // Ejecutamos la validación de seguridad (candados) sobre los productos nuevos
+        actualizarBotonesComprados();
+        
+    } catch (error) {
+        console.error("Fallo al conectar con la API de Python:", error);
+        // Si la API falla, se conservan las tarjetas estáticas del HTML como respaldo
+    }
+}
+ 

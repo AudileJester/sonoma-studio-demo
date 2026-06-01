@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte - Sonoma Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Poppins:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-fade-in">
+
+    <aside class="sidebar">
+        <div class="sidebar-icon" onclick="window.location.href='index.html'">
+            <i class="fa-solid fa-house"></i><span class="game-name-pixel">INICIO</span>
+        </div>
+        <div class="sidebar-icon" onclick="window.location.href='ixora.html'">
+            <img src="imagenes/logo-ixora.jpg" alt="Logo Ixora" class="sidebar-custom-logo"><span class="game-name-pixel">IXORA</span>
+        </div>
+        <div class="sidebar-icon" onclick="cambiarJuego(this)"><i class="fa-solid fa-ghost"></i><span class="game-name-pixel">PHANTOM</span>
+        </div>        
+        <div class="sidebar-icon" onclick="cambiarJuego(this)">
+            <i class="fa-solid fa-car-side"></i><span class="game-name-pixel">NEON RUSH</span>
+        </div>
+        <div class="sidebar-icon" id="btnAjustesSidebar" style="margin-top: auto; margin-bottom: 20px;" onclick="abrirAjustes(this)">
+            <i class="fa-solid fa-gear"></i><span class="game-name-pixel">AJUSTES</span>
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+        <div class="game-background" style="background-image: linear-gradient(rgba(0, 255, 204, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 204, 0.05) 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <header class="top-header">
+            <div class="logo-container">
+                <img src="imagenes/logo.png" alt="Sonoma Studio Logo" class="logo-img-effect" onclick="window.location.href='index.html'" style="cursor: pointer;">
+            </div>
+            
+            <nav class="main-nav">
+                <a href="index.html">Destacado</a>
+                <a href="estudio.html">Estudio</a>
+                <a href="comunidad.html">Comunidad</a>
+                <a href="soporte.html" class="active">Soporte</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="action-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="action-btn cart-btn" id="cartBtnMain" onclick="abrirCarrito()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-text">Comprar</span>
+                    <span id="cartBadge" class="cart-badge hidden">0</span>
+                </button>                
+                <button class="action-btn" id="btnNotificaciones" onclick="abrirNotificaciones()">
+                    <i class="fa-regular fa-bell"></i>
+                    <span id="notifBadge" class="cart-badge hidden">!</span>
+                </button>
+                
+                <div class="account-container" id="userAccount">
+                    <button class="action-btn login-btn" onclick="window.location.href='cuenta.html'"><i class="fa-regular fa-user"></i> Mi Cuenta</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-area" style="overflow-y: auto; max-height: calc(100vh - 80px);">
+            
+            <section class="hero-section" style="min-height: auto; padding: 30px 0; margin-bottom: 20px; text-align: center; flex-direction: column;">
+                <span class="badge pulse-badge" style="letter-spacing: 2px; background: rgba(255, 71, 87, 0.1); color: #ff4757; border-color: #ff4757;">
+                    <i class="fa-solid fa-tower-broadcast"></i> ENLACE CIFRADO ESTABLECIDO
+                </span>
+                <h1 class="glitch" data-text="CENTRO DE COMANDOS" style="font-size: 2.8rem; margin-top: 15px;">CENTRO DE COMANDOS</h1>
+                <p style="font-size: 1rem; color: var(--text-muted); max-width: 650px; margin: 10px auto;">
+                    ¿Anomalías en el sistema? ¿Problemas de despliegue en el Río Santiago? Reporta incidentes técnicos o consulta la base de datos táctica de Sonoma Studio.
+                </p>
+            </section>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 25px; margin-bottom: 40px;" class="news-grid">
+                
+                <div style="display: flex; flex-direction: column; gap: 25px;">
+                    
+                    <section class="glass-panel" style="padding: 30px;">
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.3rem; margin-bottom: 20px; border-bottom: 1px solid rgba(0,255,204,0.2); padding-bottom: 10px;">
+                            <i class="fa-solid fa-terminal" style="color: var(--primary-color);"></i> Reporte de Anomalía
+                        </h3>
+                        
+<form class="support-form" id="supportFormFirebase">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+        <div class="form-group">
+            <label style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--primary-color);">IDENTIFICACIÓN (EMAIL)</label>
+            <input type="email" id="supEmail" placeholder="agente@sonomastudio.com" required style="background: rgba(0,0,0,0.5); border: 1px solid rgba(0,255,204,0.3); color: #fff; padding: 12px; border-radius: 4px; width: 100%;">
+        </div>
+        <div class="form-group">
+            <label style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--primary-color);">NIVEL DE PRIORIDAD</label>
+            <select id="supPrioridad" required class="dark-select" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(0,255,204,0.3); color: #fff; padding: 12px; border-radius: 4px; width: 100%;">
+                <option value="" disabled selected>Selecciona nivel...</option>
+                <option value="baja">Verde - Consulta General</option>
+                <option value="media">Amarillo - Bug Menor</option>
+                <option value="alta" style="color: #ff4757;">Rojo - Falla Crítica (Crash)</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group" style="margin-bottom: 20px;">
+        <label style="font-family: 'Orbitron', sans-serif; font-size: 0.8rem; color: var(--primary-color);">DESCRIPCIÓN DEL INCIDENTE</label>
+        <textarea id="supMensaje" rows="5" placeholder="Detalla la falla del sistema aquí. Incluye códigos de error si los tienes..." required style="background: rgba(0,0,0,0.5); border: 1px solid rgba(0,255,204,0.3); color: #fff; padding: 12px; border-radius: 4px; width: 100%; resize: vertical;"></textarea>
+    </div>
+    
+    <button type="submit" class="submit-btn" style="width: 100%; padding: 15px; font-family: 'Orbitron', sans-serif; font-size: 1rem; letter-spacing: 2px;">
+        <i class="fa-solid fa-paper-plane"></i> ENVIAR TRANSMISIÓN AL ESTUDIO
+    </button>
+</form>
+                    </section>
+
+                    <section class="glass-panel" style="padding: 30px; border-left: 4px solid #ffb703;">
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.2rem; margin-bottom: 20px;">
+                            <i class="fa-solid fa-database" style="color: #ffb703;"></i> Archivos Desclasificados (F.A.Q.)
+                        </h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 5px; border: 1px solid rgba(255,183,3,0.2);">
+                                <h4 style="font-size: 0.95rem; margin-bottom: 5px; color: #ffb703;">[QUERY] ¿Cuándo sale la versión completa de Ixora?</h4>
+                                <p style="font-size: 0.85rem; color: #d1d8e0; line-height: 1.5;">Actualmente el sistema se encuentra en Fase Alpha (Prototipo V1.0). Nuestro núcleo de desarrollo está trabajando para expandir el Vertedero Matatlán. Mantente alerta a los DevLogs.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 5px; border: 1px solid rgba(255,183,3,0.2);">
+                                <h4 style="font-size: 0.95rem; margin-bottom: 5px; color: #ffb703;">[QUERY] ¿Requisitos mínimos del sistema?</h4>
+                                <p style="font-size: 0.85rem; color: #d1d8e0; line-height: 1.5;">El motor 2D está altamente optimizado. Solo requieres un procesador Dual Core, 4GB de RAM y una tarjeta gráfica compatible con WebGL. Funciona nativo en Chrome y Firefox.</p>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 5px; border: 1px solid rgba(255,183,3,0.2);">
+                                <h4 style="font-size: 0.95rem; margin-bottom: 5px; color: #ffb703;">[QUERY] ¿Cómo reporto un bug visual en los sprites?</h4>
+                                <p style="font-size: 0.85rem; color: #d1d8e0; line-height: 1.5;">Utiliza el formulario superior con prioridad "Amarillo". Si tienes capturas de pantalla, súbelas al canal #bug-reports en nuestro Discord oficial.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 25px;">
+                    
+                    <section class="glass-panel" style="padding: 20px; text-align: center;">
+                        <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1rem; margin-bottom: 15px; color: var(--primary-color);">
+                            DIAGNÓSTICO SATELITAL
+                        </h3>
+                        
+                        <div style="width: 150px; height: 150px; border-radius: 50%; border: 2px solid var(--primary-color); margin: 0 auto 20px auto; position: relative; background: radial-gradient(circle, rgba(0,255,204,0.2) 0%, rgba(0,0,0,0.8) 70%); box-shadow: 0 0 20px rgba(0,255,204,0.3); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                            <div style="position: absolute; width: 100%; height: 1px; background: rgba(0,255,204,0.4);"></div>
+                            <div style="position: absolute; width: 1px; height: 100%; background: rgba(0,255,204,0.4);"></div>
+                            <i class="fa-solid fa-slash fa-spin" style="font-size: 140px; color: rgba(0,255,204,0.5); position: absolute; transform-origin: center;"></i>
+                            <div class="fa-fade" style="position: absolute; top: 30%; left: 60%; width: 6px; height: 6px; background: #ff4757; border-radius: 50%; box-shadow: 0 0 8px #ff4757;"></div>
+                            <div class="fa-fade" style="position: absolute; bottom: 40%; left: 25%; width: 6px; height: 6px; background: #2ed573; border-radius: 50%; box-shadow: 0 0 8px #2ed573; animation-delay: 1s;"></div>
+                        </div>
+
+                        <div style="font-family: 'Press Start 2P', cursive; font-size: 0.6rem; color: #fff; line-height: 1.8;">
+                            SECTOR: TONALÁ_01<br>
+                            ESTADO: <span style="color: #2ed573;">ESTABLE</span><br>
+                            NODOS ACTIVOS: 342
+                        </div>
+                    </section>
+
+                    <div class="support-side-panel" style="background: transparent; border: none; padding: 0;">
+                        <h4 style="font-family: 'Orbitron', sans-serif;"><i class="fa-solid fa-network-wired"></i> Nodos de Conexión</h4>
+                        <div class="server-status" style="background: rgba(18, 21, 28, 0.9);"><div class="status-indicator"><span class="dot online"></span><span>Servidor Principal (MX)</span></div><span class="ping-text">En línea</span></div>
+                        <div class="server-status" style="background: rgba(18, 21, 28, 0.9);"><div class="status-indicator"><span class="dot online" style="background: #ffb703; box-shadow: 0 0 8px #ffb703;"></span><span>Base de Datos</span></div><span class="ping-text" style="color: #ffb703;">Sincronizando</span></div>
+                        <div class="server-status" style="background: rgba(18, 21, 28, 0.9);"><div class="status-indicator"><span class="dot online"></span><span>Matchmaking</span></div><span class="ping-text">14ms</span></div>
+                        
+                        <div class="discord-card" title="Únete a la comunidad" style="margin-top: 15px;">
+                            <i class="fa-brands fa-discord"></i>
+                            <p>¿Respuesta inmediata?<br>Habla con los Devs en Discord.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="studio-footer" style="margin-top: 5px;">
+                <div class="footer-info">
+                    <img src="imagenes/axolotito.png" alt="Sonoma Pequeño" class="logo-img-effect-small">
+                    <p>© 2026 Sonoma Studio. Todos los derechos reservados.</p>
+                    <div class="legal-links">
+                        <a href="terminos.html">Términos y Condiciones</a>
+                        <a href="privacidad.html">Política de Privacidad</a>
+                        <a href="acuerdo.html">Acuerdo de Usuario</a>
+                    </div>
+                    <div class="payment-methods"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-paypal"></i></div>
+                </div>
+                <div class="footer-links"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-discord"></i></a></div>
+            </footer>
+        </main>
+    </div>
+<div class="settings-overlay hidden" id="cartOverlay" onclick="cerrarCarrito()">
+        <div class="settings-drawer glass-panel" id="cartDrawer" style="padding:30px;" onclick="event.stopPropagation()">
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-cart-shopping"></i> Tu Carrito</h2>
+                <button class="close-settings" onclick="cerrarCarrito()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="settings-content" style="padding: 20px 0;">
+                <div id="cartItemsList"></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.1); margin-top:20px; padding-top:15px;">
+                    <span style="color:var(--text-muted);">Total Estimado:</span>
+                    <span id="cartTotalDisplay" style="color:var(--primary-color); font-weight:bold; font-size:1.2rem;">$0.00 MXN</span>
+                </div>
+                <button class="btn-mercado-pago" onclick="procederPagoMP()">
+                    <img src="https://www.mercadopago.com/org-img/MP3/home/logomp3.gif" alt="MP" style="height: 20px; vertical-align: middle; margin-right: 10px;">
+                    PROCEDER AL PAGO
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay hidden" id="logoutModalOverlay">
+        <div class="custom-modal">
+            <div class="modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3>¿CERRAR CONEXIÓN?</h3>
+            <p>Estás a punto de desconectarte de la red de Sonoma Studio. ¿Estás seguro?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn btn-no" onclick="cerrarModalLogout()">No, regresar</button>
+                <button class="modal-btn btn-yes" onclick="confirmarLogout()">Sí, desconectar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-overlay hidden" id="settingsModalOverlay" onclick="cerrarAjustes()">
+        <div class="settings-drawer glass-panel" id="settingsDrawer" onclick="event.stopPropagation()">
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-sliders"></i> Ajustes</h2>
+                <button class="close-settings" onclick="cerrarAjustes()"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+            </div>
+            <div class="settings-topbar">
+                <button class="setting-tab-btn active" onclick="cambiarPestañaAjustes(this, 'tab-cuenta')"><i class="fa-solid fa-user-shield"></i> Cuenta</button>
+                <button class="setting-tab-btn" onclick="cambiarPestañaAjustes(this, 'tab-juego')"><i class="fa-solid fa-gamepad"></i> Sistema</button>
+                <button class="setting-tab-btn" onclick="cambiarPestañaAjustes(this, 'tab-audio')"><i class="fa-solid fa-headphones"></i> Audio</button>
+            </div>
+            <div class="settings-content">
+                <div id="tab-cuenta" class="setting-section active">
+                    <h3>Identidad de Agente</h3>
+                    <p class="settings-desc">Tu alias en la red. Sujeto a reglas de la corporación.</p>
+                    <div class="gamertag-manager">
+                        <label>Gamertag Actual:</label>
+                        <input type="text" id="ajustesGamertagActual" readonly value="Cargando...">
+                        <label style="margin-top: 15px;">Nuevo Gamertag (max 15):</label>
+                        <div class="change-tag-group">
+                            <input type="text" id="ajustesNuevoGamertag" maxlength="15" placeholder="Ej. CazadorX">
+                            <button class="submit-btn" onclick="solicitarCambioGamertag()">Actualizar</button>
+                        </div>
+                        <p id="gamertagStatusMsg" class="gamertag-status">Estado: En espera de autorización...</p>
+                    </div>
+                    <div id="premiumUnlockPanel" class="premium-panel hidden">
+                        <h4><i class="fa-solid fa-lock"></i> Cambio Bloqueado (6 Meses)</h4>
+                        <p>Soborna a la corporación para liberar el nombre inmediatamente.</p>
+                        <button class="premium-btn" onclick="pagarDolarSimulado()"><i class="fa-solid fa-sack-dollar"></i> Pagar $1.00 USD</button>
+                    </div>
+                </div>
+                <div id="tab-juego" class="setting-section hidden">
+                    <h3>Opciones de Sistema</h3>
+                    <div class="settings-row">
+                        <label>Idioma del Servidor:</label>
+                        <select class="dark-select">
+                            <option value="es" selected>Español (Latinoamérica)</option>
+                            <option value="en">English (US)</option>
+                            <option value="pt">Português (Brasil)</option>
+                        </select>
+                    </div>
+                    <div class="settings-row">
+                        <label>Filtro Visual Retro:</label>
+                        <select class="dark-select">
+                            <option value="off" selected>Desactivado (Pixel Perfect)</option>
+                            <option value="crt">Efecto Monitor CRT</option>
+                            <option value="scanlines">Scanlines (Líneas)</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="tab-audio" class="setting-section hidden">
+                    <h3>Mezclador de Frecuencias</h3>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-volume-high"></i> Volumen Maestro</label>
+                        <input type="range" min="0" max="100" value="80" class="cyber-slider">
+                    </div>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-music"></i> Música (OST)</label>
+                        <input type="range" min="0" max="100" value="100" class="cyber-slider">
+                    </div>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-burst"></i> Efectos (SFX)</label>
+                        <input type="range" min="0" max="100" value="60" class="cyber-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay hidden" id="sonomaAlertOverlay" style="z-index: 3000;">
+        <div class="custom-modal">
+            <div class="modal-icon" id="sonomaAlertIcon"><i class="fa-solid fa-circle-exclamation"></i></div>
+            <h3 id="sonomaAlertTitle" style="font-family: 'Orbitron', sans-serif; margin-bottom: 10px;">ALERTA</h3>
+            <p id="sonomaAlertMessage" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">Mensaje</p>
+            <div class="modal-buttons" id="sonomaAlertButtons">
+                <button class="modal-btn btn-yes" onclick="cerrarAlertaSonoma()">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay hidden" id="loadingPaymentOverlay" style="z-index: 4000; background: rgba(0,0,0,0.95);">
+        <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div class="loader-spinner"></div>
+            <h3 class="glitch" data-text="PROCESANDO TRANSACCIÓN..." style="font-size: 1.5rem; margin-bottom: 10px;">PROCESANDO TRANSACCIÓN...</h3>
+            <p style="color: var(--primary-color); font-size: 0.85rem; letter-spacing: 2px;">CONECTANDO CON MERCADO PAGO <i class="fa-solid fa-lock"></i></p>
+        </div>
+    </div>
+
+    <div class="settings-overlay hidden" id="notifOverlay" onclick="cerrarNotificaciones()">
+        <div class="settings-drawer glass-panel" id="notifDrawer" style="padding:30px;" onclick="event.stopPropagation()">
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-bell"></i> Biblioteca y Recibos</h2>
+                <button class="close-settings" onclick="cerrarNotificaciones()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="settings-content" id="purchasedItemsList" style="padding: 20px 0;">
+            </div>
+        </div>
+    </div>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDKqAXZG7fGDt0chpgeAVYzQGpN587h3wM",
+    authDomain: "sonoma-studio.firebaseapp.com",
+    projectId: "sonoma-studio",
+    storageBucket: "sonoma-studio.firebasestorage.app",
+    messagingSenderId: "932852745828",
+    appId: "1:932852745828:web:fb67a11f2b00c1391f0171"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const supportForm = document.getElementById('supportFormFirebase');
+  if(supportForm) {
+      supportForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          try {
+              // Guardamos en la base de datos de Firebase en la colección "Soporte"
+              await addDoc(collection(db, "Soporte"), {
+                  correo: document.getElementById('supEmail').value,
+                  prioridad: document.getElementById('supPrioridad').value,
+                  mensaje: document.getElementById('supMensaje').value,
+                  fecha: new Date().toLocaleString()
+              });
+              
+              // Lanzamos la alerta de éxito de tu juego y limpiamos el formulario
+              mostrarAlertaSonoma("TRANSMISIÓN EXITOSA", "Tu reporte ha sido encriptado y enviado al servidor de Sonoma Studio.", "success");
+              supportForm.reset();
+          } catch (error) {
+              mostrarAlertaSonoma("ERROR DE TRANSMISIÓN", "Fallo al conectar con la base de datos satelital.", "error");
+          }
+      });
+  }
+</script>
+    <script src="script.js"></script>
+</body>
+</html>

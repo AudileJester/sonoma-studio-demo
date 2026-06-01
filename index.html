@@ -17,6 +17,8 @@
         <div class="sidebar-icon" onclick="window.location.href='ixora.html'">
             <img src="imagenes/logo-ixora.jpg" alt="Logo Ixora" class="sidebar-custom-logo"><span class="game-name-pixel">IXORA</span>
         </div>        
+        <div class="sidebar-icon" onclick="cambiarJuego(this)"><i class="fa-solid fa-ghost"></i><span class="game-name-pixel">PHANTOM</span>
+        </div>
         <div class="sidebar-icon" onclick="cambiarJuego(this)">
             <i class="fa-solid fa-car-side"></i><span class="game-name-pixel">NEON RUSH</span>
         </div>
@@ -35,9 +37,9 @@
             
             <nav class="main-nav">
                 <a href="#" class="active">Destacado</a>
-                <a href="#">Estudio</a>
-                <a href="#">Comunidad</a>
-                <a href="#">Soporte</a>
+                <a href="estudio.html">Estudio</a>
+                <a href="comunidad.html">Comunidad</a>
+                <a href="soporte.html">Soporte</a>
             </nav>
             <div class="header-actions">
                 <button class="action-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -66,7 +68,7 @@
                 <div class="hero-content">
                     <span class="badge pulse-badge"><i class="fa-solid fa-microchip"></i> FASE ALPHA</span>
                     <h1 class="glitch" data-text="IXORA: EL CAMBIO">IXORA:<br>EL CAMBIO ES AHORA</h1>
-                    <p>Adéntrate en el Río Santiago. Domina el pixel art, sobrevive a la toxicidad y descubre los secretos de los dioses antiguos en nuestra próxima entrega estelar.</p>
+                    <p>Adéntrate en el Ceti Río Santiago, Río Santiago y Vertedero. Domina el pixel art, sobrevive a la contaminacion y toxicidad y descubre los secretos de los dioses antiguos en nuestra próxima entrega estelar.</p>
                     <div class="hero-buttons">
                         <button class="play-btn" onclick="window.location.href='ixora.html'"><i class="fa-solid fa-eye"></i> EXPLORAR PROYECTO</button>
                         <button class="secondary-btn">Ver Tráiler Oficial</button>
@@ -117,52 +119,61 @@
                             </div>
                         </div>
                         <div class="promo-card">
-                            <img src="imagenes/main_lev_build.png" alt="Playera" class="promo-img">
+                            <img src="imagenes/playera-ulises.png" alt="Playera" class="promo-img">
                             <div class="promo-info">
-                                <h4>Artbook Digital: El Río Santiago</h4>
-                                <p class="promo-price">$299 MXN</p>
-                                <button class="btn-add-cart-pro" onclick="agregarAlCarrito('Artbook Digital', 299, 'imagenes/main_lev_build.png')">
+                                <h4>Playera oficial Ulises</h4>
+                                <p class="promo-price">$54 MXN</p>
+                                <button class="btn-add-cart-pro" onclick="agregarAlCarrito('Playera Oficial', 54, 'imagenes/playera-ulises.png')">
                                     <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
                                 </button>
                             </div>
                         </div>
                         <div class="promo-card">
-                            <div class="promo-badge">PAQUETE</div>
-                            <img src="imagenes/Captura de pantalla 2026-04-10 212953.png" alt="Artbook" class="promo-img">
-                            <div class="promo-info">
-                                <h4>Pack Supervivencia (Juego + Arte)</h4>
-                                <p class="promo-price">$399 MXN</p>
-                                <button class="btn-add-cart-pro" onclick="agregarAlCarrito('Pack Supervivencia', 399, 'imagenes/Captura de pantalla 2026-04-10 212953.png')">
-                                    <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
-                                </button>
-                            </div>
+                        <div class="promo-badge">Objeto</div>
+                        <img src="imagenes/taza-ixora.png" alt="Taza" class="promo-img">
+                        <div class="promo-info">
+                            <h4>Taza Ixora</h4>
+                            <p class="promo-price">$35 MXN</p>
+                            <button class="btn-add-cart-pro" onclick="agregarAlCarrito('Taza Oficial', 35, 'imagenes/taza-ixora.png')">
+                                <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
+                            </button>
                         </div>
                     </div>
-                </section>
-
+                </div> </section> <section class="promo-section" style="margin-top: 40px; text-align: center;">
+                <h3><i class="fa-solid fa-clapperboard" style="color: var(--primary-color);"></i> Spot Publicitario: Sonoma Studio</h3>
+                <div style="border: 2px solid var(--primary-color); border-radius: 15px; overflow: hidden; display: inline-block; box-shadow: 0 0 20px rgba(0,255,204,0.3); width: 100%; max-width: 800px; aspect-ratio: 16/9; position: relative; z-index: 10;">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/1gHGXUgSZsc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </section>
                 <section class="support-wrapper">
                     <div class="support-container">
                         <h3><i class="fa-solid fa-headset"></i> Centro de Operaciones</h3>
-                        <form class="support-form">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Correo Electrónico</label>
-                                    <input type="email" placeholder="agente@correo.com" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Región</label>
-                                    <select required class="dark-select">
-                                        <option value="" disabled selected>Selecciona tu base...</option>
-                                        <option value="mx">México</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Reporte de Situación</label>
-                                <textarea rows="4" placeholder="Describe tu consulta aquí..." required></textarea>
-                            </div>
-                            <button type="submit" class="submit-btn">Enviar Transmisión</button>
-                        </form>
+<form class="support-form" id="supportFormFirebase">
+    <div class="form-row">
+        <div class="form-group">
+            <label>Correo Electrónico</label>
+            <input type="email" id="supEmail" placeholder="agente@correo.com" required>
+        </div>
+        <div class="form-group">
+            <label>Región</label>
+            <select id="supRegion" required class="dark-select">
+                <option value="" disabled selected>Selecciona tu base...</option>
+                <option value="mx">México</option>
+                <option value="latam">Resto de Latinoamérica</option>
+                <option value="norteamerica">Norteamérica</option>
+                <option value="europa">Europa</option>
+                <option value="asia">Asia</option>
+                <option value="oceania">Oceanía</option>
+                <option value="africa">África</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Reporte de Situación</label>
+        <textarea id="supMensaje" rows="4" placeholder="Describe tu consulta aquí..." required></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Enviar Transmisión</button>
+</form>
                     </div>
                     <div class="support-side-panel">
                         <h4><i class="fa-solid fa-location-dot"></i> Base de Desarrollo</h4>
@@ -177,47 +188,98 @@
                 </section>
             </section>
 
-            <section class="support-wrapper">
-                <div class="support-container">
-                    <h3><i class="fa-solid fa-headset"></i> Centro de Operaciones</h3>
-                    <form class="support-form">
-                        <div class="form-row">
-                            <div class="form-group"><label>Correo Electrónico</label><input type="email" placeholder="agente@correo.com" required></div>
-                            <div class="form-group"><label>Región / País</label>
-                                <select required class="dark-select">
-                                    <option value="" disabled selected>Selecciona tu base...</option>
-                                    <option value="mx">México</option>
-                                    <option value="latam">Resto de Latinoamérica</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group"><label>Reporte de Situación</label><textarea rows="4" placeholder="Describe el bug o tu consulta aquí..." required></textarea></div>
-                        <button type="submit" class="submit-btn">Enviar Transmisión</button>
-                    </form>
-                </div>
-                <div class="support-side-panel">
-                    <h4><i class="fa-solid fa-server"></i> Estado del Sistema</h4>
-                    <div class="server-status"><div class="status-indicator"><span class="dot online"></span><span>Servidores Ixora</span></div><span class="ping-text">En línea</span></div>
-                    <div class="server-status"><div class="status-indicator"><span class="dot online"></span><span>Matchmaking</span></div><span class="ping-text">12ms</span></div>
-                    <div class="discord-card" title="Únete a la comunidad"><i class="fa-brands fa-discord"></i><p>¿Necesitas ayuda rápida?<br>Únete a nuestro Discord oficial.</p></div>
-                </div>
-            </section>
+<section class="support-wrapper">
+    
+    <div class="support-container glass-panel" style="display: flex; flex-direction: column; padding: 25px;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0, 255, 204, 0.3); padding-bottom: 15px; margin-bottom: 15px;">
+            <div style="display: flex; gap: 8px;">
+                <div style="width: 14px; height: 14px; border-radius: 50%; background: #ff4757; box-shadow: 0 0 8px #ff4757;"></div>
+                <div style="width: 14px; height: 14px; border-radius: 50%; background: #ffa502; box-shadow: 0 0 8px #ffa502;"></div>
+                <div style="width: 14px; height: 14px; border-radius: 50%; background: #2ed573; box-shadow: 0 0 8px #2ed573;"></div>
+            </div>
+            <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: #fff; margin: 0; letter-spacing: 2px;">
+                SYS_TERM // <span style="color: var(--primary-color);">IXORA_OS</span>
+            </h3>
+            <span class="badge pulse-badge" style="font-size: 0.6rem; padding: 4px 8px;">EN DIRECTO</span>
+        </div>
+        
+        <div style="background: #05070a; border: 1px solid rgba(0, 255, 204, 0.2); border-radius: 5px; padding: 20px; font-family: monospace; font-size: 0.85rem; color: var(--primary-color); flex-grow: 1; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: inset 0 0 30px rgba(0,255,204,0.05); position: relative; overflow: hidden;">
             
-            <footer class="studio-footer">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px); pointer-events: none;"></div>
+
+            <div style="z-index: 1;">
+                <p style="margin-bottom: 12px; opacity: 0.8;">[SYS] Estableciendo conexión cifrada con Matatlán_Node...</p>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+                    <span>[DATA] Integridad de firewall:</span>
+                    <span style="color: #2ed573;">100% SECURE</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                    <span>[WARN] Nivel de toxicidad local:</span>
+                    <span style="color: #ff4757; font-weight:bold;" class="fa-fade">CRÍTICO 89%</span>
+                </div>
+
+                <div style="margin-bottom: 15px; background: rgba(0,0,0,0.5); padding: 10px; border: 1px dashed rgba(0,255,204,0.3);">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 8px; opacity: 0.7;">
+                        <span>Descargando protocolos de purificación...</span>
+                        <span>74%</span>
+                    </div>
+                    <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                        <div style="width: 74%; height: 100%; background: var(--primary-color); box-shadow: 0 0 15px var(--primary-color);"></div>
+                    </div>
+                </div>
+
+                <p style="font-size: 0.7rem; color: rgba(255,255,255,0.25); line-height: 1.4; margin-bottom: 15px; letter-spacing: 2px;">
+                    0x7F8A 0x11B2 0x99C4 0x44A1 0x22F0<br>
+                    0x55D3 0x66C9 0x33B7 0x00A5 0x11E2
+                </p>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(0, 255, 204, 0.2); padding-top: 15px; z-index: 1;">
+                <p style="margin-bottom: 8px; color: #fff; font-size: 0.8rem;">> Agente detectado. Credenciales válidas.</p>
+                <p class="glitch" data-text="> ESPERANDO COMANDOS_ " style="margin-bottom: 0; font-weight: bold; font-size: 1.2rem; text-shadow: 0 0 8px var(--primary-color);">> ESPERANDO COMANDOS<span class="fa-fade" style="color: #fff;">_</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="support-side-panel">
+        <h4><i class="fa-solid fa-server"></i> Estado del Sistema</h4>
+        <div class="server-status"><div class="status-indicator"><span class="dot online"></span><span>Servidores Ixora</span></div><span class="ping-text">En línea</span></div>
+        <div class="server-status"><div class="status-indicator"><span class="dot online"></span><span>Matchmaking</span></div><span class="ping-text">12ms</span></div>
+        <div class="discord-card" title="Únete a la comunidad"><i class="fa-brands fa-discord"></i><p>¿Necesitas ayuda rápida?<br>Únete a nuestro Discord oficial.</p></div>
+    </div>
+    
+</section>
+            
+<footer class="studio-footer">
                 <div class="footer-info">
                     <img src="imagenes/axolotito.png" alt="Sonoma Pequeño" class="logo-img-effect-small">
                     <p>© 2026 Sonoma Studio. Todos los derechos reservados.</p>
+                    
                     <div class="legal-links">
                         <a href="terminos.html">Términos y Condiciones</a>
                         <a href="privacidad.html">Política de Privacidad</a>
                         <a href="acuerdo.html">Acuerdo de Usuario</a>
                     </div>
-                    <div class="payment-methods" title="Métodos de pago aceptados"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-paypal"></i></div>
+
+
+                    <div class="payment-methods" title="Métodos de pago aceptados" style="margin-top: 20px;">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <i class="fa-brands fa-paypal"></i>
+                    </div>
                 </div>
-                <div class="footer-links"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-discord"></i></a></div>
+                
+                <div class="footer-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-discord"></i></a>
+                </div>
             </footer>
         </main>
     </div>
+    
 <button onclick="resetCompras()" style="position:fixed; bottom:20px; right:20px; z-index:999;">
     RESET TEST
 </button>
@@ -362,5 +424,44 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDKqAXZG7fGDt0chpgeAVYzQGpN587h3wM",
+    authDomain: "sonoma-studio.firebaseapp.com",
+    projectId: "sonoma-studio",
+    storageBucket: "sonoma-studio.firebasestorage.app",
+    messagingSenderId: "932852745828",
+    appId: "1:932852745828:web:fb67a11f2b00c1391f0171"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app); // Tu base de datos
+
+  const supportForm = document.getElementById('supportFormFirebase');
+  if(supportForm) {
+      supportForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          try {
+              // Guardamos en la base de datos de Firebase
+              await addDoc(collection(db, "Soporte"), {
+                  correo: document.getElementById('supEmail').value,
+                  region: document.getElementById('supRegion').value,
+                  mensaje: document.getElementById('supMensaje').value,
+                  fecha: new Date().toLocaleString()
+              });
+              
+              // Lanzamos tu animación de éxito y limpiamos el formulario
+              mostrarAlertaSonoma("TRANSMISIÓN EXITOSA", "Tu reporte ha sido enviado al servidor de Sonoma.", "success");
+              supportForm.reset();
+          } catch (error) {
+              mostrarAlertaSonoma("ERROR", "Fallo al conectar con la base de datos.", "error");
+          }
+      });
+  }
+</script>
 </body>
 </html>
