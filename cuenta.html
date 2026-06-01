@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuenta Sonoma - Sonoma Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Poppins:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-fade-in auth-page">
+
+    <div class="main-wrapper">
+        <div class="game-background"></div>
+
+        <header class="top-header">
+            <div class="logo-container">
+                <img src="imagenes/logo.png" alt="Sonoma Studio Logo" class="logo-img-effect" onclick="window.location.href='index.html'">
+            </div>
+            <nav class="main-nav">
+                <a href="index.html">Destacado</a>
+                <a href="estudio.html">Estudio</a>
+                <a href="comunidad.html">Comunidad</a>
+                <a href="soporte.html">Soporte</a>
+            </nav>
+            <div class="header-actions">
+                <button class="action-btn settings-btn" id="btnAjustesHeader" onclick="abrirAjustes(this)">
+                    <i class="fa-solid fa-gear"></i><span class="settings-text">Configuración</span>
+                </button>
+                <button class="action-btn login-btn" onclick="window.location.href='index.html'">
+                    <i class="fa-solid fa-house"></i> Volver a la Base
+                </button>
+            </div>
+        </header>
+
+        <main class="content-area panel-central">
+            <div class="auth-wrapper glass-panel">
+                
+                <div class="auth-tabs" id="authTabs">
+                    <button class="tab-btn active" id="tabLoginBtn">Iniciar Sesión</button>
+                    <button class="tab-btn" id="tabRegisterBtn">Nuevo Recluta</button>
+                </div>
+
+                <div class="auth-container" id="authContainer">
+                    
+                    <div class="login-box" id="loginBox">
+                        <div class="auth-header">
+                            <h2>Base de Datos</h2>
+                            <p>Accede a la red de Sonoma Studio</p>
+                        </div>
+                        <form class="auth-form" id="loginFormSim">
+                            <div class="input-group">
+                                <i class="fa-solid fa-at"></i><input type="email" placeholder="Correo de Agente" required id="loginEmail">
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-solid fa-lock"></i><input type="password" placeholder="Contraseña Cifrada" required id="loginPassword">
+                            </div>
+                            <button type="submit" class="submit-btn auth-btn">Entrar a la Base</button>
+                        </form>
+                        <div class="divider">ó continuar con</div>
+                        <div class="social-login">
+                            <button class="social-btn google-btn"><i class="fa-brands fa-google"></i> Google</button>
+                            <button class="social-btn facebook-btn"><i class="fa-brands fa-facebook-f"></i> Facebook</button>
+                        </div>
+                    </div>
+
+                    <div class="register-box hidden" id="registerBox">
+                        <div class="auth-header">
+                            <h2>Registro Oficial</h2>
+                            <p>Crea tu cuenta única y prepárate para Ixora</p>
+                        </div>
+                        <form class="auth-form" id="registerFormSim">
+                            <div class="input-group">
+                                <i class="fa-solid fa-user-tag"></i><input type="text" placeholder="Gamertag (max 15)" required maxlength="15" id="regGamertag">
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <input type="date" required id="regBirthDate" class="date-input" title="Fecha de Nacimiento">
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-solid fa-at"></i><input type="email" placeholder="Correo Electrónico" required id="regEmail">
+                            </div>
+                            <div class="input-group">
+                                <i class="fa-solid fa-lock"></i><input type="password" placeholder="Contraseña Cifrada" required id="regPassword">
+                            </div>
+                            <button type="submit" class="submit-btn auth-btn">Crear Cuenta Sonoma</button>
+                        </form>
+                        <div class="divider">ó regístrate rápido con</div>
+                        <div class="social-login">
+                            <button class="social-btn google-btn"><i class="fa-brands fa-google"></i> Google</button>
+                            <button class="social-btn facebook-btn"><i class="fa-brands fa-facebook-f"></i> Facebook</button>
+                        </div>
+                    </div>
+
+                    <div class="social-setup-box hidden" id="socialSetupBox">
+                        <div class="auth-header">
+                            <h2>Sincronización Exitosa</h2>
+                            <p>Cuenta vinculada. Ingresa un Gamertag para finalizar tu registro en Sonoma.</p>
+                        </div>
+                        <form class="auth-form" id="socialSetupFormSim">
+                            <div class="input-group">
+                                <i class="fa-solid fa-user-tag"></i><input type="text" placeholder="Gamertag (max 15)" required maxlength="15" id="socialGamertag">
+                            </div>
+                            <button type="submit" class="submit-btn auth-btn">Conectar a la Base</button>
+                        </form>
+                        <div class="divider"></div>
+                        <p style="text-align: center; margin-top: 10px;">
+                            <a href="#" onclick="window.location.reload();" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">Cancelar y volver</a>
+                        </p>
+                    </div>
+
+                    <div class="profile-box hidden" id="profileBox">
+                        <div class="auth-header">
+                            <h2>Perfil de Agente</h2>
+                        </div>
+                        <div class="profile-info">
+                            <div class="avatar-glow"><i class="fa-solid fa-user-astronaut"></i></div>
+                            <h3 id="profileGamertagDisplay" class="glitch" data-text="Cargando...">Cargando...</h3>
+                            <p class="status-badge"><span class="dot online"></span> En línea</p>
+                        </div>
+
+                        <div class="profile-games-nav">
+                            <button class="game-tab-btn active" onclick="cambiarStats(this, 'ixora')">
+                                <img src="imagenes/logo-ixora.jpg" alt="Ixora" class="game-icon-img">
+                            </button>
+                            <button class="game-tab-btn" onclick="cambiarStats(this, 'phantom')"><i class="fa-solid fa-ghost"></i></button>
+                            <button class="game-tab-btn" onclick="cambiarStats(this, 'neon')"><i class="fa-solid fa-car-side"></i></button>
+                        </div>
+
+                        <div class="stats-container" id="statsContainer">
+                            <div class="stat-item"><i class="fa-regular fa-clock"></i> <span>0 Horas</span></div>
+                            <div class="stat-item"><i class="fa-solid fa-trophy"></i> <span>0/50 Logros</span></div>
+                            <div class="stat-item"><i class="fa-solid fa-medal"></i> <span>Rango: Recluta</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer class="studio-footer">
+                <div class="footer-info">
+                    <img src="imagenes/axolotito.png" alt="Sonoma Pequeño" class="logo-img-effect-small">
+                    <p>&copy; 2026 Sonoma Studio. Todos los derechos reservados.</p>
+                    <div class="legal-links">
+                        <a href="terminos.html">Términos y Condiciones</a>
+                        <a href="privacidad.html">Política de Privacidad</a>
+                        <a href="acuerdo.html">Acuerdo de Usuario</a>
+                    </div>
+                    <div class="payment-methods" title="Métodos de pago aceptados">
+                        <i class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i> <i class="fa-brands fa-paypal"></i>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <div class="settings-overlay hidden" id="settingsModalOverlay" onclick="cerrarAjustes()">
+        <div class="settings-drawer glass-panel" id="settingsDrawer">
+            
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-sliders"></i> Ajustes</h2>
+                <button class="close-settings" onclick="cerrarAjustes()"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+            </div>
+            
+            <div class="settings-topbar">
+                <button class="setting-tab-btn active" onclick="cambiarPestañaAjustes(this, 'tab-cuenta')"><i class="fa-solid fa-user-shield"></i> Cuenta</button>
+                <button class="setting-tab-btn" onclick="cambiarPestañaAjustes(this, 'tab-juego')"><i class="fa-solid fa-gamepad"></i> Sistema</button>
+                <button class="setting-tab-btn" onclick="cambiarPestañaAjustes(this, 'tab-audio')"><i class="fa-solid fa-headphones"></i> Audio</button>
+            </div>
+
+            <div class="settings-content">
+                <div id="tab-cuenta" class="setting-section active">
+                    <h3>Identidad de Agente</h3>
+                    <p class="settings-desc">Tu alias en la red. Sujeto a reglas de la corporación.</p>
+                    
+                    <div class="gamertag-manager">
+                        <label>Gamertag Actual:</label>
+                        <input type="text" id="ajustesGamertagActual" readonly value="Cargando...">
+                        
+                        <label style="margin-top: 15px;">Nuevo Gamertag (max 15):</label>
+                        <div class="change-tag-group">
+                            <input type="text" id="ajustesNuevoGamertag" maxlength="15" placeholder="Ej. CazadorX">
+                            <button class="submit-btn" onclick="solicitarCambioGamertag()">Actualizar</button>
+                        </div>
+                        <p id="gamertagStatusMsg" class="gamertag-status">Estado: En espera de autorización...</p>
+                    </div>
+
+                    <div id="premiumUnlockPanel" class="premium-panel hidden">
+                        <h4><i class="fa-solid fa-lock"></i> Cambio Bloqueado (6 Meses)</h4>
+                        <p>Soborna a la corporación para liberar el nombre inmediatamente.</p>
+                        <button class="premium-btn" onclick="pagarDolarSimulado()"><i class="fa-solid fa-sack-dollar"></i> Pagar $1.00 USD</button>
+                    </div>
+                </div>
+
+                <div id="tab-juego" class="setting-section hidden">
+                    <h3>Opciones de Sistema</h3>
+                    
+                    <div class="settings-row">
+                        <label>Idioma del Servidor:</label>
+                        <select class="dark-select">
+                            <option value="es" selected>Español (Latinoamérica)</option>
+                            <option value="en">English (US)</option>
+                            <option value="pt">Português (Brasil)</option>
+                        </select>
+                    </div>
+
+                    <div class="settings-row">
+                        <label>Filtro Visual Retro:</label>
+                        <select class="dark-select">
+                            <option value="off" selected>Desactivado (Pixel Perfect)</option>
+                            <option value="crt">Efecto Monitor CRT</option>
+                            <option value="scanlines">Scanlines (Líneas)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="tab-audio" class="setting-section hidden">
+                    <h3>Mezclador de Frecuencias</h3>
+                    
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-volume-high"></i> Volumen Maestro</label>
+                        <input type="range" min="0" max="100" value="80" class="cyber-slider">
+                    </div>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-music"></i> Música (OST)</label>
+                        <input type="range" min="0" max="100" value="100" class="cyber-slider">
+                    </div>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-burst"></i> Efectos (SFX)</label>
+                        <input type="range" min="0" max="100" value="60" class="cyber-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="module">
+  // 1. Importar las herramientas de Firebase (Versión 12.14.0)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendEmailVerification } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+
+  // 2. Tus "llaves" de la base de datos
+  const firebaseConfig = {
+    apiKey: "AIzaSyDKqAXZG7fGDt0chpgeAVYzQGpN587h3wM",
+    authDomain: "sonoma-studio.firebaseapp.com",
+    projectId: "sonoma-studio",
+    storageBucket: "sonoma-studio.firebasestorage.app",
+    messagingSenderId: "932852745828",
+    appId: "1:932852745828:web:fb67a11f2b00c1391f0171",
+    measurementId: "G-LBB9V4JK8N"
+  };
+
+  // 3. Inicializar Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app); // Opcional, pero bueno tenerlo
+  const auth = getAuth(app);
+  const providerGoogle = new GoogleAuthProvider();
+
+  // ==========================================
+  // LÓGICA DE REGISTRO (CON VALIDACIÓN DE CORREO REAL)
+  // ==========================================
+  const formRegistro = document.getElementById('registerFormSim');
+  if(formRegistro) {
+      formRegistro.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const email = document.querySelector('#registerBox input[type="email"]').value;
+          const password = document.querySelector('#registerBox input[type="password"]').value;
+          const gamertag = document.getElementById('regGamertag').value;
+
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Se envía el correo real a la bandeja de entrada
+                sendEmailVerification(userCredential.user)
+                .then(() => {
+                    alert("¡Registro exitoso! Por favor, revisa tu bandeja de entrada o SPAM para verificar tu correo antes de iniciar sesión.");
+                    // Guardamos el gamertag temporalmente, pero NO lo logueamos
+                    localStorage.setItem('sonomaGamertag', gamertag);
+                    window.location.reload(); 
+                });
+            })
+            .catch((error) => {
+                // Manejo de errores amigable
+                if(error.code === 'auth/email-already-in-use') {
+                    alert("Ese correo ya está registrado.");
+                } else if(error.code === 'auth/weak-password') {
+                    alert("La contraseña debe tener al menos 6 caracteres.");
+                } else {
+                    alert("Error al registrar: " + error.message);
+                }
+            });
+      });
+  }
+
+// ==========================================
+  // LÓGICA DE INICIO DE SESIÓN (NUEVA CON FIX)
+  // ==========================================
+  const formLogin = document.getElementById('loginFormSim');
+  if(formLogin) {
+      formLogin.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const email = document.querySelector('#loginBox input[type="email"]').value;
+          const password = document.querySelector('#loginBox input[type="password"]').value;
+
+          signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                if(userCredential.user.emailVerified) {
+                    localStorage.setItem('sonomaLoggedIn', 'true');
+                    
+                    // --- FIX DEL BUG "NULL" ---
+                    let nombreUsuario = userCredential.user.displayName;
+                    if (!nombreUsuario) {
+                        // Si no hay nombre guardado, cortamos el correo antes de la @
+                        nombreUsuario = userCredential.user.email.split('@')[0]; 
+                    }
+                    localStorage.setItem('sonomaGamertag', nombreUsuario);
+                    // --------------------------
+
+                    window.location.href = 'index.html';
+                } else {
+                    alert("Aún no has verificado tu correo. Revisa tu bandeja de entrada.");
+                    auth.signOut(); 
+                }
+            })
+            .catch((error) => {
+                alert("Correo o contraseña incorrectos.");
+            });
+      });
+  }
+// ==========================================
+  // LÓGICA DE GOOGLE LOGIN (Arreglado para ambos botones)
+  // ==========================================
+  const botonesGoogle = document.querySelectorAll('.google-btn');
+  botonesGoogle.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          signInWithPopup(auth, providerGoogle)
+            .then((result) => {
+                const user = result.user;
+                localStorage.setItem('sonomaLoggedIn', 'true');
+                // Toma el nombre de tu cuenta de Google de forma automática
+                localStorage.setItem('sonomaGamertag', user.displayName || 'Agente Google');
+                window.location.href = 'index.html';
+            }).catch((error) => {
+                // Si el usuario cierra la ventanita antes de elegir cuenta, no hacemos nada
+                if(error.code !== 'auth/popup-closed-by-user') {
+                    alert("Error con Google: " + error.message);
+                }
+            });
+      });
+  });
+
+  // ==========================================
+  // BOTONES DE FACEBOOK (Solo de adorno / Decoración)
+  // ==========================================
+  const botonesFacebook = document.querySelectorAll('.facebook-btn');
+  botonesFacebook.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          // Lanza una alerta avisando que está fuera de servicio
+          alert("SISTEMA SONOMA: Conexión con los servidores de Meta (Facebook) temporalmente inactiva por seguridad de la red.");
+      });
+  });
+  
+</script>
+    <script src="script.js"></script>
+</body>
+</html>

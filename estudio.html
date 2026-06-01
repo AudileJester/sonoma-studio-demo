@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio - Sonoma Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Poppins:wght@300;400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-fade-in">
+
+    <aside class="sidebar">
+        <div class="sidebar-icon" onclick="window.location.href='index.html'">
+            <i class="fa-solid fa-house"></i><span class="game-name-pixel">INICIO</span>
+        </div>
+        <div class="sidebar-icon" onclick="window.location.href='ixora.html'">
+            <img src="imagenes/logo-ixora.jpg" alt="Logo Ixora" class="sidebar-custom-logo"><span class="game-name-pixel">IXORA</span>
+        </div>        
+        <div class="sidebar-icon" onclick="cambiarJuego(this)"><i class="fa-solid fa-ghost"></i><span class="game-name-pixel">PHANTOM</span>
+        </div>
+        <div class="sidebar-icon" onclick="cambiarJuego(this)">
+            <i class="fa-solid fa-car-side"></i><span class="game-name-pixel">NEON RUSH</span>
+        </div>
+        <div class="sidebar-icon" id="btnAjustesSidebar" style="margin-top: auto; margin-bottom: 20px;" onclick="abrirAjustes(this)">
+            <i class="fa-solid fa-gear"></i><span class="game-name-pixel">AJUSTES</span>
+        </div>
+    </aside>
+
+    <div class="main-wrapper">
+        <div class="game-background" style="background-image: linear-gradient(rgba(0, 255, 204, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 204, 0.02) 1px, transparent 1px); background-size: 50px 50px;"></div>
+
+        <header class="top-header">
+            <div class="logo-container">
+                <img src="imagenes/logo.png" alt="Sonoma Studio Logo" class="logo-img-effect" onclick="window.location.href='index.html'" style="cursor: pointer;">
+            </div>
+            
+            <nav class="main-nav">
+                <a href="index.html">Destacado</a>
+                <a href="estudio.html" class="active">Estudio</a>
+                <a href="comunidad.html">Comunidad</a>
+                <a href="soporte.html">Soporte</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="action-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="action-btn cart-btn" id="cartBtnMain" onclick="abrirCarrito()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-text">Comprar</span>
+                    <span id="cartBadge" class="cart-badge hidden">0</span>
+                </button>                
+                <button class="action-btn" id="btnNotificaciones" onclick="abrirNotificaciones()">
+                    <i class="fa-regular fa-bell"></i>
+                    <span id="notifBadge" class="cart-badge hidden">!</span>
+                </button>
+                
+                <div class="account-container" id="userAccount">
+                    <button class="action-btn login-btn" onclick="window.location.href='cuenta.html'"><i class="fa-regular fa-user"></i> Mi Cuenta</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-area" style="overflow-y: auto; max-height: calc(100vh - 80px);">
+            
+            <section class="hero-section" style="min-height: auto; padding: 40px 0; margin-bottom: 30px;">
+                <div class="hero-content" style="max-width: 100%;">
+                    <span class="badge pulse-badge" style="letter-spacing: 3px;"><i class="fa-solid fa-code"></i> NÚCLEO DESARROLLADOR</span>
+                    <h1 class="glitch" data-text="SONOMA STUDIO" style="font-size: 3rem; margin-top: 15px;">SONOMA STUDIO</h1>
+                    <p style="font-size: 1.1rem; max-width: 800px; margin-top: 10px;">
+                        Somos una agrupación de desarrollo independiente nacida en el CETI Río Santiago. Fusionamos la arquitectura de software avanzada, la riqueza cultural mexicana y el activismo ecológico para crear experiencias interactivas con impacto real.
+                    </p>
+                </div>
+            </section>
+
+            <section class="promo-section" style="margin-bottom: 40px;">
+                <div class="promo-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px;">
+                    
+                    <div class="glass-panel" style="padding: 30px; display: flex; flex-direction: column; gap: 15px; border-left: 4px solid var(--primary-color);">
+                        <h3 style="font-family: 'Orbitron', sans-serif; color: #fff; font-size: 1.3rem;"><i class="fa-solid fa-seedling" style="color: var(--primary-color);"></i> Manifiesto Ecológico</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                            Creemos firmemente que los videojuegos son el medio más potente para combatir la apatía social. Nuestro objetivo con proyectos como <span style="color: #fff; font-weight: bold;">Ixora</span> es visibilizar crisis ambientales críticas, como la degradación de la Cuenca del Río Santiago y las problemáticas del Vertedero de Matatlán, transformando la educación ambiental en un desafío lúdico interactivo.
+                        </p>
+                    </div>
+
+                    <div class="glass-panel" style="padding: 30px; display: flex; flex-direction: column; gap: 15px; border-left: 4px solid var(--primary-color);">
+                        <h3 style="font-family: 'Orbitron', sans-serif; color: #fff; font-size: 1.3rem;"><i class="fa-solid fa-cubes" style="color: var(--primary-color);"></i> Ingeniería y Rigor Técnico</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                            No solo diseñamos mecánicas divertidas; estructuramos software de calidad. Basamos nuestros desarrollos bajo normativas internacionales estrictas, aplicando el estándar <span style="color: #fff; font-weight: bold;">IEEE 830</span> para la gestión minuciosa de requerimientos y la norma <span style="color: #fff; font-weight: bold;">ISO/IEC 12207</span> para garantizar un ciclo de vida óptimo, escalable y libre de errores críticos.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="news-section" style="margin-bottom: 40px;">
+                <h3 style="font-family: 'Orbitron', sans-serif; font-size: 1.5rem; margin-bottom: 25px; letter-spacing: 2px;"><i class="fa-solid fa-users-gear" style="color: var(--primary-color);"></i> SCRIPT / INTEGRANTES</h3>
+                
+                <div class="news-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    
+                    <div class="news-card" style="padding: 25px; text-align: center; background: rgba(18, 21, 28, 0.4);">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; background: rgba(0,255,204,0.05); box-shadow: 0 0 15px rgba(0,255,204,0.2);">
+                            <i class="fa-solid fa-palette" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        </div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 5px;">Donovan O. Pérez</h4>
+                        <span style="font-family: 'Press Start 2P', cursive; font-size: 0.55rem; color: var(--primary-color); letter-spacing: 1px;">ART & UI DESIGNER</span>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 15px; line-height: 1.5;">
+                            Responsable de la dirección de identidad visual del estudio y diseño de interfaces UX/UI responsivas mediante LibreSprite.
+                        </p>
+                    </div>
+
+                    <div class="news-card" style="padding: 25px; text-align: center; background: rgba(18, 21, 28, 0.4);">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; background: rgba(0,255,204,0.05); box-shadow: 0 0 15px rgba(0,255,204,0.2);">
+                            <i class="fa-solid fa-gamepad" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        </div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 5px;">Luis F. Murguía</h4>
+                        <span style="font-family: 'Press Start 2P', cursive; font-size: 0.55rem; color: var(--primary-color); letter-spacing: 1px;">LEVEL DESIGNER</span>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 15px; line-height: 1.5;">
+                            Encargado del mapeado topográfico de las zonas de cuarentena, modelado de entornos conceptuales, diseño lógico de comportamientos e inteligencia artificial de jefes y optimización de assets 16-bits.
+                        </p>
+                    </div>
+
+                    <div class="news-card" style="padding: 25px; text-align: center; background: rgba(18, 21, 28, 0.4);">
+                        <div style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary-color); display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; background: rgba(0,255,204,0.05); box-shadow: 0 0 15px rgba(0,255,204,0.2);">
+                            <i class="fa-solid fa-layer-group" style="font-size: 2rem; color: var(--primary-color);"></i>
+                        </div>
+                        <h4 style="font-size: 1.1rem; margin-bottom: 5px;">Pablo E. Rueda</h4>
+                        <span style="font-family: 'Press Start 2P', cursive; font-size: 0.55rem; color: var(--primary-color); letter-spacing: 1px;">CORE DEVELOPER</span>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 15px; line-height: 1.5;">
+                            Arquitecto de sistemas a cargo de la Máquina de Estados Finita (FSM), inyección de scripts nativos ES6 en GDevelop y compilación del entorno WebGL.
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+            <footer class="studio-footer" style="margin-top: 5px;">
+                <div class="footer-info">
+                    <img src="imagenes/axolotito.png" alt="Sonoma Pequeño" class="logo-img-effect-small">
+                    <p>© 2026 Sonoma Studio. Todos los derechos reservados.</p>
+                    <div class="legal-links">
+                        <a href="terminos.html">Términos y Condiciones</a>
+                        <a href="privacidad.html">Política de Privacidad</a>
+                        <a href="acuerdo.html">Acuerdo de Usuario</a>
+                    </div>
+                    <div class="payment-methods"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-paypal"></i></div>
+                </div>
+                <div class="footer-links"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-discord"></i></a></div>
+            </footer>
+        </main>
+    </div>
+<div class="settings-overlay hidden" id="cartOverlay" onclick="cerrarCarrito()">
+        <div class="settings-drawer glass-panel" id="cartDrawer" style="padding:30px;" onclick="event.stopPropagation()">
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-cart-shopping"></i> Tu Carrito</h2>
+                <button class="close-settings" onclick="cerrarCarrito()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="settings-content" style="padding: 20px 0;">
+                <div id="cartItemsList"></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(255,255,255,0.1); margin-top:20px; padding-top:15px;">
+                    <span style="color:var(--text-muted);">Total Estimado:</span>
+                    <span id="cartTotalDisplay" style="color:var(--primary-color); font-weight:bold; font-size:1.2rem;">$0.00 MXN</span>
+                </div>
+                <button class="btn-mercado-pago" onclick="procederPagoMP()">
+                    <img src="https://www.mercadopago.com/org-img/MP3/home/logomp3.gif" alt="MP" style="height: 20px; vertical-align: middle; margin-right: 10px;">
+                    PROCEDER AL PAGO
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay hidden" id="logoutModalOverlay">
+        <div class="custom-modal">
+            <div class="modal-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3>¿CERRAR CONEXIÓN?</h3>
+            <p>Estás a punto de desconectarte de la red de Sonoma Studio. ¿Estás seguro?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn btn-no" onclick="cerrarModalLogout()">No, regresar</button>
+                <button class="modal-btn btn-yes" onclick="confirmarLogout()">Sí, desconectar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings-overlay hidden" id="settingsModalOverlay" onclick="cerrarAjustes()">
+        <div class="settings-drawer glass-panel" id="settingsDrawer" onclick="event.stopPropagation()">
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-sliders"></i> Ajustes</h2>
+                <button class="close-settings" onclick="cerrarAjustes()"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+            </div>
+            <div class="settings-topbar">
+                <button class="setting-tab-btn active" onclick="cambiarPestañaAjustes(this, 'tab-cuenta')"><i class="fa-solid fa-user-shield"></i> Cuenta</button>
+                <button class="setting-tab-btn" onclick="cambiarPestañaAjustes(this, 'tab-juego')"><i class="fa-solid fa-gamepad"></i> Sistema</button>
+                <button class="setting-tab-btn" onclick="cambiarPestañaAjustes(this, 'tab-audio')"><i class="fa-solid fa-headphones"></i> Audio</button>
+            </div>
+            <div class="settings-content">
+                <div id="tab-cuenta" class="setting-section active">
+                    <h3>Identidad de Agente</h3>
+                    <p class="settings-desc">Tu alias en la red. Sujeto a reglas de la corporación.</p>
+                    <div class="gamertag-manager">
+                        <label>Gamertag Actual:</label>
+                        <input type="text" id="ajustesGamertagActual" readonly value="Cargando...">
+                        <label style="margin-top: 15px;">Nuevo Gamertag (max 15):</label>
+                        <div class="change-tag-group">
+                            <input type="text" id="ajustesNuevoGamertag" maxlength="15" placeholder="Ej. CazadorX">
+                            <button class="submit-btn" onclick="solicitarCambioGamertag()">Actualizar</button>
+                        </div>
+                        <p id="gamertagStatusMsg" class="gamertag-status">Estado: En espera de autorización...</p>
+                    </div>
+                    <div id="premiumUnlockPanel" class="premium-panel hidden">
+                        <h4><i class="fa-solid fa-lock"></i> Cambio Bloqueado (6 Meses)</h4>
+                        <p>Soborna a la corporación para liberar el nombre inmediatamente.</p>
+                        <button class="premium-btn" onclick="pagarDolarSimulado()"><i class="fa-solid fa-sack-dollar"></i> Pagar $1.00 USD</button>
+                    </div>
+                </div>
+                <div id="tab-juego" class="setting-section hidden">
+                    <h3>Opciones de Sistema</h3>
+                    <div class="settings-row">
+                        <label>Idioma del Servidor:</label>
+                        <select class="dark-select">
+                            <option value="es" selected>Español (Latinoamérica)</option>
+                            <option value="en">English (US)</option>
+                            <option value="pt">Português (Brasil)</option>
+                        </select>
+                    </div>
+                    <div class="settings-row">
+                        <label>Filtro Visual Retro:</label>
+                        <select class="dark-select">
+                            <option value="off" selected>Desactivado (Pixel Perfect)</option>
+                            <option value="crt">Efecto Monitor CRT</option>
+                            <option value="scanlines">Scanlines (Líneas)</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="tab-audio" class="setting-section hidden">
+                    <h3>Mezclador de Frecuencias</h3>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-volume-high"></i> Volumen Maestro</label>
+                        <input type="range" min="0" max="100" value="80" class="cyber-slider">
+                    </div>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-music"></i> Música (OST)</label>
+                        <input type="range" min="0" max="100" value="100" class="cyber-slider">
+                    </div>
+                    <div class="slider-group">
+                        <label><i class="fa-solid fa-burst"></i> Efectos (SFX)</label>
+                        <input type="range" min="0" max="100" value="60" class="cyber-slider">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay hidden" id="sonomaAlertOverlay" style="z-index: 3000;">
+        <div class="custom-modal">
+            <div class="modal-icon" id="sonomaAlertIcon"><i class="fa-solid fa-circle-exclamation"></i></div>
+            <h3 id="sonomaAlertTitle" style="font-family: 'Orbitron', sans-serif; margin-bottom: 10px;">ALERTA</h3>
+            <p id="sonomaAlertMessage" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">Mensaje</p>
+            <div class="modal-buttons" id="sonomaAlertButtons">
+                <button class="modal-btn btn-yes" onclick="cerrarAlertaSonoma()">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay hidden" id="loadingPaymentOverlay" style="z-index: 4000; background: rgba(0,0,0,0.95);">
+        <div style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div class="loader-spinner"></div>
+            <h3 class="glitch" data-text="PROCESANDO TRANSACCIÓN..." style="font-size: 1.5rem; margin-bottom: 10px;">PROCESANDO TRANSACCIÓN...</h3>
+            <p style="color: var(--primary-color); font-size: 0.85rem; letter-spacing: 2px;">CONECTANDO CON MERCADO PAGO <i class="fa-solid fa-lock"></i></p>
+        </div>
+    </div>
+
+    <div class="settings-overlay hidden" id="notifOverlay" onclick="cerrarNotificaciones()">
+        <div class="settings-drawer glass-panel" id="notifDrawer" style="padding:30px;" onclick="event.stopPropagation()">
+            <div class="settings-header">
+                <h2><i class="fa-solid fa-bell"></i> Biblioteca y Recibos</h2>
+                <button class="close-settings" onclick="cerrarNotificaciones()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="settings-content" id="purchasedItemsList" style="padding: 20px 0;">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
