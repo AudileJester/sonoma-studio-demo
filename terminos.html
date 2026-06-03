@@ -23,13 +23,21 @@
                 <a href="comunidad.html">Comunidad</a>
                 <a href="soporte.html">Soporte</a>
             </nav>
-            <div class="header-actions">
-                <button class="action-btn settings-btn">
+                <div class="header-actions">
+                <button class="action-btn settings-btn" id="btnAjustesHeader" onclick="abrirAjustes(this)">
                     <i class="fa-solid fa-gear"></i>
                     <span class="settings-text">Configuración</span>
                 </button>
 
-                <button class="action-btn login-btn"><i class="fa-regular fa-user"></i> Mi Cuenta</button>
+                <!-- Menú de cuenta corregido -->
+                <div class="account-container" id="userAccount">
+                    <button class="action-btn login-btn" onclick="window.location.href='cuenta.html'"><i class="fa-regular fa-user"></i> Mi Cuenta</button>
+                    <div class="account-dropdown" id="accountDropdown">
+                        <span class="gamertag-display">Agente Sonoma</span>
+                        <a href="cuenta.html" id="btnIrPerfil">Perfil</a>
+                        <a href="#" onclick="abrirModalLogout(event)">Cerrar Sesión</a>
+                    </div>
+                </div>
             </div>
         </header>
 

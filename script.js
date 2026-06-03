@@ -640,7 +640,7 @@ function renderBiblioteca() {
                 <div class="cart-item">
                     <div class="cart-item-info">
                         <h4 style="color:white; margin-bottom: 5px;">${nombre}</h4>
-                        <button style="background:transparent; border:1px dashed var(--primary-color); color:var(--primary-color); border-radius:5px; padding:5px 10px; cursor:pointer; font-size:0.8rem;" onclick="window.print()"><i class="fa-solid fa-file-invoice"></i> Imprimir Ticket</button>
+                        <button style="background:transparent; border:1px dashed var(--primary-color); color:var(--primary-color); border-radius:5px; padding:5px 10px; cursor:pointer; font-size:0.8rem;" onclick="imprimirTicket('${nombre}')"><i class="fa-solid fa-file-invoice"></i> Imprimir Ticket</button>
                     </div>
                 </div>
             `;
@@ -649,7 +649,7 @@ function renderBiblioteca() {
 }
 
 /* =======================================
-   SIMULADOR DE DESCARGA (EXCLUSIVO IXORA)
+   SIMULADOR DE DESCARGA / SINCRONIZACIÓN WEB (EXCLUSIVO IXORA)
    ======================================= */
 function iniciarDescargaSimulada() {
     const overlay = document.getElementById('downloadOverlay');
@@ -665,7 +665,8 @@ function iniciarDescargaSimulada() {
     let progress = 0;
     const totalSize = 450; // MB
     
-    status.innerText = "Descargando Ixora_El_Cambio_v1.0.exe...";
+    // Cambiamos el texto para que tenga sentido con un juego web
+    status.innerText = "Sincronizando acceso a los servidores de Ixora...";
     
     const interval = setInterval(() => {
         progress += Math.random() * 8 + 3; 
@@ -680,7 +681,7 @@ function iniciarDescargaSimulada() {
 
         if(progress === 100) {
             clearInterval(interval);
-            status.innerText = "¡DESCARGA COMPLETADA! Extrayendo paquetes...";
+            status.innerText = "¡SINCRONIZACIÓN COMPLETADA! Vinculando a tu cuenta...";
             speedInfo.innerText = "0 MB/s";
             
             setTimeout(() => {
@@ -689,22 +690,17 @@ function iniciarDescargaSimulada() {
                 localStorage.setItem('ixora_downloaded', 'true');
                 actualizarBotonesComprados(); 
                 
-                // Descarga simulada de la imagen
-                const link = document.createElement('a');
-                link.href = 'imagenes/logo-ixora.jpg';
-                link.download = 'Ixora_Launcher_Files.jpg';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+                // AQUÍ ELIMINAMOS EL CÓDIGO QUE DESCARGABA LA IMAGEN.
+                // Ya no descargará nada en la PC, solo te dará el acceso.
                 
-                mostrarAlertaSonoma("INSTALACIÓN EXITOSA", "El juego se ha instalado correctamente en tu sistema. Ya puedes iniciarlo.", "success");
+                mostrarAlertaSonoma("ACCESO CONCEDIDO", "El juego se ha vinculado correctamente a tu red. Ya puedes iniciarlo en tu navegador.", "success");
             }, 2000);
         }
     }, 400); 
 }
 
 function abrirJuegoSimulado() {
-    window.open('imagenes/logo-ixora.jpg', '_blank');
+    window.open('https://gd.games/games/4b37c74f-9252-4934-8bec-78f2fcab3054', '_blank');
 }
 
 /* =======================================
@@ -763,4 +759,124 @@ async function cargarProductosDesdeAPI() {
         // Si la API falla, se conservan las tarjetas estáticas del HTML como respaldo
     }
 }
- 
+/* =======================================
+   GENERADOR DE TICKETS DE COMPRA (TÉRMICO)
+   ======================================= */
+async function imprimirTicket(nombreItem) {
+    let precioItem = "Consultar";
+
+    // 1. Verificamos el precio: Si es Ixora es fijo, si no, le pregunta a tu API
+    if (nombreItem.includes("Ixora")) {
+        precioItem = "149.00";
+    } else {
+        try {
+            const response = await fetch('https://sonomastudio.pythonanywhere.com/api/productos');
+            const productos = await response.json();
+            // Busca el producto que coincida con el nombre
+            const prod = productos.find(p => nombreItem.includes(p.nombre) || p.nombre.includes(nombreItem));
+            if (prod) {
+                precioItem = prod.precio.toFixed(2);
+            }
+        } catch (e) {
+            console.error("Fallo al consultar la API para el ticket.");
+            precioItem = "0.00"; // Respaldo por si falla la conexión
+        }
+    }
+
+    // 2. Construir el diseño del Ticket HTML
+    const fecha = new Date().toLocaleString();
+    const nombreUsuario = localStorage.getItem('sonomaGamertag') || 'Agente Desconocido';
+    
+    const ticketHTML = `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <title>Recibo de Compra - Sonoma Studio</title>
+            <style>
+                body { 
+                    font-family: 'Courier New', Courier, monospace; 
+                    background: #2a2d35; /* Fondo oscuro alrededor del ticket */
+                    color: #000; 
+                    padding: 20px; 
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .ticket {
+                    background: #fff;
+                    padding: 20px 25px;
+                    width: 300px;
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+                    border-radius: 2px;
+                }
+                h2 { text-align: center; margin-bottom: 5px; font-size: 22px; font-weight: 900; }
+                .subtitle { text-align: center; font-size: 12px; margin-bottom: 20px; color: #555; }
+                .divider { border-bottom: 1px dashed #000; margin: 15px 0; }
+                .row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+                .total { font-weight: bold; font-size: 16px; margin-top: 15px; }
+                .footer { text-align: center; font-size: 11px; margin-top: 30px; line-height: 1.5; color: #333; }
+                
+                /* Estilo del botón manual */
+                .btn-imprimir {
+                    margin-top: 25px;
+                    padding: 12px 25px;
+                    background: #00ffcc;
+                    color: #000;
+                    border: none;
+                    border-radius: 5px;
+                    font-family: Arial, sans-serif;
+                    font-weight: bold;
+                    font-size: 14px;
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0, 255, 204, 0.3);
+                    transition: 0.2s;
+                }
+                .btn-imprimir:hover { background: #00e6b8; transform: scale(1.05); }
+
+                /* REGLA DE ORO: Ocultar el botón y el fondo al momento de imprimir de verdad */
+                @media print {
+                    body { background: #fff; padding: 0; display: block; }
+                    .ticket { box-shadow: none; width: 100%; max-width: 300px; margin: 0 auto; }
+                    .no-print { display: none !important; }
+                }
+            </style>
+        </head>
+        <body>
+            
+            <div class="ticket">
+                <h2>SONOMA STUDIO</h2>
+                <div class="subtitle">Comprobante de Transacción Digital</div>
+                
+                <div class="divider"></div>
+                <div class="row"><span>Fecha:</span> <span>${fecha}</span></div>
+                <div class="row"><span>Cliente:</span> <span>${nombreUsuario}</span></div>
+                <div class="row"><span>Método:</span> <span>Mercado Pago</span></div>
+                <div class="row"><span>Estado:</span> <span>PAGADO</span></div>
+                <div class="divider"></div>
+                
+                <div class="row"><span>Concepto:</span></div>
+                <div class="row"><strong style="max-width: 70%;">${nombreItem}</strong> <span>$${precioItem}</span></div>
+                
+                <div class="divider"></div>
+                <div class="row total"><span>TOTAL MXN:</span> <span>$${precioItem}</span></div>
+                <div class="divider"></div>
+                
+                <div class="footer">
+                    ¡Gracias por apoyar el desarrollo independiente mexicano!<br><br>
+                    Los artículos digitales se han sincronizado con tu perfil de Agente.<br><br>
+                    <strong>sonomastudio.mx</strong>
+                </div>
+            </div>
+
+            <button class="btn-imprimir no-print" onclick="window.print()">🖨️ Imprimir Documento</button>
+
+        </body>
+        </html>
+    `;
+
+    // 3. Abrir la ventana emergente para imprimir
+    const ventanaImpresion = window.open('', '_blank', 'width=450,height=700');
+    ventanaImpresion.document.write(ticketHTML);
+    ventanaImpresion.document.close();
+}
