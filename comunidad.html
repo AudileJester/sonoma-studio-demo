@@ -56,8 +56,12 @@
                 
                 <div class="account-container" id="userAccount">
                     <button class="action-btn login-btn" onclick="window.location.href='cuenta.html'"><i class="fa-regular fa-user"></i> Mi Cuenta</button>
+                    <div class="account-dropdown" id="accountDropdown">
+                        <span class="gamertag-display">Agente Sonoma</span>
+                        <a href="cuenta.html" id="btnIrPerfil">Perfil</a>
+                        <a href="#" onclick="abrirModalLogout(event)">Cerrar Sesión</a>
+                    </div>
                 </div>
-            </div>
         </header>
 
         <main class="content-area" style="overflow-y: auto; max-height: calc(100vh - 80px);">
@@ -175,6 +179,22 @@
                         <a href="privacidad.html">Política de Privacidad</a>
                         <a href="acuerdo.html">Acuerdo de Usuario</a>
                     </div>
+                                            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%;">
+                        <p style="color: var(--text-muted); font-size: 0.85rem; font-weight: bold; margin-bottom: 15px;">Alianzas Estratégicas y Medios</p>
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+            
+                            <a href="https://logitech-web-three.vercel.app/" target="_blank" title="Visitar Empresa 1">
+                                <img src="imagenes/LOGO1.jpg" alt="Empresa 1" style="height: 35px; border-radius: 5px; filter: grayscale(100%); transition: filter 0.3s, transform 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.1)';" onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)';">
+                            </a>
+                            
+                            <a href="https://neoo-three.vercel.app" target="_blank" title="Visitar Neoo">
+                                <img src="imagenes/LOGO2.png" alt="Empresa 2" style="height: 35px; border-radius: 5px; filter: grayscale(100%); transition: filter 0.3s, transform 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.1)';" onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)';">
+                            </a>
+                            
+                            <a href="https://tusitiopronto.netlify.app" target="_blank" title="Visitar Tu Sitio Pronto">
+                                <img src="imagenes/LOGO3.jpeg" alt="Empresa 3" style="height: 35px; border-radius: 5px; filter: grayscale(100%); transition: filter 0.3s, transform 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.1)';" onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)';">
+                            </a>
+                        </div>
                     <div class="payment-methods"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-paypal"></i></div>
                 </div>
                 <div class="footer-links"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-discord"></i></a></div>
@@ -194,8 +214,8 @@
                     <span id="cartTotalDisplay" style="color:var(--primary-color); font-weight:bold; font-size:1.2rem;">$0.00 MXN</span>
                 </div>
                 <button class="btn-mercado-pago" onclick="procederPagoMP()">
-                    <img src="https://www.mercadopago.com/org-img/MP3/home/logomp3.gif" alt="MP" style="height: 20px; vertical-align: middle; margin-right: 10px;">
-                    PROCEDER AL PAGO
+                    <i class="fa-regular fa-handshake" style="font-size: 1.3rem; vertical-align: middle; margin-right: 8px;"></i>
+                    PAGAR CON MERCADO PAGO
                 </button>
             </div>
         </div>

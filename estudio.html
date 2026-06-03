@@ -56,8 +56,12 @@
                 
                 <div class="account-container" id="userAccount">
                     <button class="action-btn login-btn" onclick="window.location.href='cuenta.html'"><i class="fa-regular fa-user"></i> Mi Cuenta</button>
+                    <div class="account-dropdown" id="accountDropdown">
+                        <span class="gamertag-display">Agente Sonoma</span>
+                        <a href="cuenta.html" id="btnIrPerfil">Perfil</a>
+                        <a href="#" onclick="abrirModalLogout(event)">Cerrar Sesión</a>
+                    </div>
                 </div>
-            </div>
         </header>
 
         <main class="content-area" style="overflow-y: auto; max-height: calc(100vh - 80px);">
@@ -66,8 +70,10 @@
                 <div class="hero-content" style="max-width: 100%;">
                     <span class="badge pulse-badge" style="letter-spacing: 3px;"><i class="fa-solid fa-code"></i> NÚCLEO DESARROLLADOR</span>
                     <h1 class="glitch" data-text="SONOMA STUDIO" style="font-size: 3rem; margin-top: 15px;">SONOMA STUDIO</h1>
-                    <p style="font-size: 1.1rem; max-width: 800px; margin-top: 10px;">
-                        Somos una agrupación de desarrollo independiente nacida en el CETI Río Santiago. Fusionamos la arquitectura de software avanzada, la riqueza cultural mexicana y el activismo ecológico para crear experiencias interactivas con impacto real.
+                    <p style="font-size: 1.1rem; max-width: 850px; margin-top: 15px; line-height: 1.7; color: #d1d8e0;">
+                        Sonoma Studio es una desarrolladora mexicana de videojuegos independientes nacida en los pasillos del CETI Río Santiago. Nos especializamos en la creación de mundos inmersivos, abarcando desde entornos 3D vanguardistas hasta la nostalgia pura del 2D y el detalle artesanal del Pixel Art. 
+                        <br><br>
+                        Nuestro enfoque principal es enaltecer la cultura local, creando historias, mitologías y mecánicas que resuenen profundamente con la identidad de México. No solo hacemos juegos; diseñamos experiencias interactivas que combinan la arquitectura de software avanzada con el activismo ecológico, llevando el talento y la perspectiva de nuestra tierra a las pantallas de todos los jugadores.
                     </p>
                 </div>
             </section>
@@ -142,12 +148,41 @@
                         <a href="privacidad.html">Política de Privacidad</a>
                         <a href="acuerdo.html">Acuerdo de Usuario</a>
                     </div>
-                    <div class="payment-methods"><i class="fa-brands fa-cc-visa"></i><i class="fa-brands fa-cc-mastercard"></i><i class="fa-brands fa-paypal"></i></div>
+                                        </div>
+                        <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%;">
+                        <p style="color: var(--text-muted); font-size: 0.85rem; font-weight: bold; margin-bottom: 15px;">Alianzas Estratégicas y Medios</p>
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+            
+                            <a href="https://logitech-web-three.vercel.app/" target="_blank" title="Visitar Empresa 1">
+                                <img src="imagenes/LOGO1.jpg" alt="Empresa 1" style="height: 35px; border-radius: 5px; filter: grayscale(100%); transition: filter 0.3s, transform 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.1)';" onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)';">
+                            </a>
+                            
+                            <a href="https://neoo-three.vercel.app" target="_blank" title="Visitar Neoo">
+                                <img src="imagenes/LOGO2.png" alt="Empresa 2" style="height: 35px; border-radius: 5px; filter: grayscale(100%); transition: filter 0.3s, transform 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.1)';" onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)';">
+                            </a>
+                            
+                            <a href="https://tusitiopronto.netlify.app" target="_blank" title="Visitar Tu Sitio Pronto">
+                                <img src="imagenes/LOGO3.jpeg" alt="Empresa 3" style="height: 35px; border-radius: 5px; filter: grayscale(100%); transition: filter 0.3s, transform 0.3s;" onmouseover="this.style.filter='grayscale(0%)'; this.style.transform='scale(1.1)';" onmouseout="this.style.filter='grayscale(100%)'; this.style.transform='scale(1)';">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="payment-methods" title="Métodos de pago aceptados" style="margin-top: 20px;">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <i class="fa-brands fa-paypal"></i>
+                    </div>
+       
+                
+                <div class="footer-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-discord"></i></a>
                 </div>
-                <div class="footer-links"><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-twitter"></i></a><a href="#"><i class="fa-brands fa-youtube"></i></a><a href="#"><i class="fa-brands fa-discord"></i></a></div>
             </footer>
         </main>
     </div>
+    
 <div class="settings-overlay hidden" id="cartOverlay" onclick="cerrarCarrito()">
         <div class="settings-drawer glass-panel" id="cartDrawer" style="padding:30px;" onclick="event.stopPropagation()">
             <div class="settings-header">
@@ -161,8 +196,8 @@
                     <span id="cartTotalDisplay" style="color:var(--primary-color); font-weight:bold; font-size:1.2rem;">$0.00 MXN</span>
                 </div>
                 <button class="btn-mercado-pago" onclick="procederPagoMP()">
-                    <img src="https://www.mercadopago.com/org-img/MP3/home/logomp3.gif" alt="MP" style="height: 20px; vertical-align: middle; margin-right: 10px;">
-                    PROCEDER AL PAGO
+                    <i class="fa-regular fa-handshake" style="font-size: 1.3rem; vertical-align: middle; margin-right: 8px;"></i>
+                    PAGAR CON MERCADO PAGO
                 </button>
             </div>
         </div>
