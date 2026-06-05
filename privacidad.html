@@ -49,28 +49,38 @@
                     <i class="fa-solid fa-shield-halved"></i> Conexión Cifrada
                 </div>
 
-                <div class="legal-header privacy-header">
-                    <h2>Política de Privacidad</h2>
-                    <p class="last-updated">Nivel de Autorización: Máximo | Marzo 2026</p>
+<div class="legal-header privacy-header">
+                    <h2 class="glitch" data-text="APARTADO LEGAL Y PRIVACIDAD">APARTADO LEGAL Y PRIVACIDAD</h2>
+                    <p class="last-updated">Cumplimiento Normativo</p>
                 </div>
                 
                 <div class="legal-content privacy-text">
-                    <h3>1. Rastreo de Bio-Señales (Datos que Recopilamos)</h3>
-                    <p>Para sobrevivir en el Vertedero de Matatlán, necesitamos conocer tu estado. Recopilamos información básica de tu cuenta (correo electrónico, región) y telemetría de juego (rendimiento de tu hardware, FPS y tus estadísticas en Ixora) para asegurar una experiencia estable.</p>
+                    
+                    <h3><i class="fa-solid fa-shield-halved" style="color: var(--primary-color);"></i> 1. Privacidad de Datos</h3>
+                    <p>En Sonoma Studio, la seguridad de la información es una prioridad estructural. Nuestro ecosistema utiliza Firebase Authentication para la gestión de credenciales. Es fundamental destacar que <strong>las contraseñas no se almacenan en nuestras bases de datos en texto plano</strong>; son procesadas mediante algoritmos de cifrado unidireccional de Google. Esto garantiza que, incluso en el improbable caso de una brecha en los servidores de Firestore, no exista riesgo de robo de credenciales, manteniendo la integridad de las cuentas de nuestros usuarios intacta en todo momento.</p>
 
-                    <h3>2. Uso de tu Información</h3>
-                    <p>Los datos obtenidos por Sonoma Studio se utilizan estrictamente para mejorar el matchmaking, la reparación de bugs y para balancear la dificultad de los enemigos en el Río Santiago. No vendemos tu información a corporaciones rivales ni a terceros.</p>
+                    <h3 style="margin-top: 25px;"><i class="fa-solid fa-palette" style="color: var(--primary-color);"></i> 2. Derechos de Propiedad Intelectual</h3>
+                    <p><strong>Concepto del Sitio Web:</strong> El diseño de la interfaz gráfica (UI) surgió de la necesidad de emular un "Launcher" profesional de videojuegos. Se optó por una estética inmersiva, futurista y oscura, propia de la cultura gamer, enfocada en resaltar los proyectos de 16-bits del estudio sin generar ruido visual.</p>
+                    <p><strong>Creación de la Marca:</strong> El logotipo representativo de Sonoma Studio es un Ajolote (Ambystoma mexicanum). Esta elección se fundamenta en el deseo de enaltecer nuestras raíces mexicanas mediante una especie endémica, adaptándola a un diseño minimalista que represente la fusión entre la identidad cultural nacional y el desarrollo tecnológico.</p>
 
-                    <h3>3. Cifrado y Seguridad de Servidores</h3>
-                    <p>Tus datos están protegidos tras firewalls de grado corporativo. Utilizamos encriptación de extremo a extremo para garantizar que tus credenciales y tu progreso guardado en nuestros servidores estén seguros contra cualquier tipo de intrusión no autorizada.</p>
+                    <h3 style="margin-top: 25px;"><i class="fa-solid fa-gavel" style="color: var(--primary-color);"></i> 3. Requisitos Legales</h3>
+                    <ul style="list-style-type: square; padding-left: 20px; color: #d1d8e0; font-size: 0.95rem; line-height: 1.6;">
+                        <li><strong>Autoría:</strong> Plataforma diseñada, estructurada y programada por Luis Fernando Murguía García, estudiante del CETI Río Santiago.</li>
+                        <li><strong>Aviso Legal:</strong> Este sitio web opera como un entorno de simulación académica. Las pasarelas de pago, descargas de software y elementos comerciales no generan cargos financieros reales ni distribuyen ejecutables comerciales.</li>
+                        <li><strong>Contacto Oficial:</strong> Para asuntos relacionados con el código o la infraestructura, la comunicación se centraliza en: <span style="color: var(--primary-color);">soporte.sonomastudio@gmail.com</span>.</li>
+                    </ul>
 
-                    <h3>4. Eliminación de Registros (Tus Derechos)</h3>
-                    <p>Como agente de Sonoma, tienes el derecho de desaparecer de nuestro radar. Puedes solicitar la eliminación completa de tus registros, historial de partidas y telemetría en cualquier momento a través de tu panel de Configuración.</p>
+                    <h3 style="margin-top: 25px;"><i class="fa-solid fa-user-lock" style="color: var(--primary-color);"></i> 4. Aviso de Privacidad</h3>
+                    <p>De conformidad con los estándares de protección digital, informamos que los datos personales recopilados (correo electrónico, alias de jugador y telemetría de interacción) son utilizados estricta y exclusivamente para el funcionamiento interno de la plataforma. Esto incluye la autorización de sesiones, despliegue del catálogo de la API y generación de comprobantes de transacciones virtuales. Sonoma Studio no vende, alquila, ni cede esta información a terceros ni a corporaciones de marketing.</p>
+
+                    <h3 style="margin-top: 25px;"><i class="fa-solid fa-code" style="color: var(--primary-color);"></i> 5. Transparencia y Responsabilidad</h3>
+                    <p><strong>Desarrollo Auténtico:</strong> Declaramos con total transparencia que para la construcción de este sitio web <strong>no se utilizó ninguna plantilla comercial prefabricada</strong>. La maquetación en HTML5, la estilización en CSS3 y la interactividad del DOM fueron escritas completamente desde cero ("from scratch").</p>
+                    <p><strong>Uso de Inteligencia Artificial:</strong> Se otorgan los créditos correspondientes al uso de modelos de Inteligencia Artificial como asistentes técnicos durante el ciclo de desarrollo. La IA fue instrumentada para optimizar lógicas complejas en JavaScript, estructurar conexiones seguras con la base de datos no relacional y depurar los endpoints de la API desarrollada en el entorno de Python/Flask. La conceptualización final, ensamblaje y control de calidad son autoría total del desarrollador humano.</p>
+
                 </div>
 
-                <button class="submit-btn btn-volver btn-privacy" onclick="window.location.href='index.html'"><i class="fa-solid fa-plug"></i> Desconectar y Volver</button>
-            </div>
-
+                <button class="submit-btn btn-volver btn-privacy" onclick="window.location.href='index.html'" style="margin-top: 30px;"><i class="fa-solid fa-plug"></i> Desconectar y Volver al Inicio</button>
+                </div>
             <footer class="studio-footer">
                 <div class="footer-info">
                     <img src="imagenes/axolotito.png" alt="Sonoma Pequeño" class="logo-img-effect-small">
